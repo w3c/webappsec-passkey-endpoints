@@ -1,0 +1,160 @@
+<pre class='metadata'>
+Title: A Well-Known URL for Passkey Endpoints
+Shortname: passkey-endpoints
+Level: None
+Status: WD
+Group: WebAppSec
+Repository: ms-id-standards/webappsec-passkey-endpoints
+URL: https://w3c.github.io/webappsec-change-password-url/
+TR: https://www.w3.org/TR/change-password-url/
+Editor: Tim Cappalli, w3cid 111190, Microsoft https://microsoft.com/, tim.cappalli@microsoft.com
+Abstract: This specification defines a well-known URL which WebAuthn
+ Relying Parties (RPs)can host to make their creation and management
+ endpoints discoverable by WebAuthn clients and authenticators.
+Complain About: accidental-2119 true
+Markup Shorthands: idl yes, markdown yes
+</pre>
+
+
+<pre class="biblio">
+{
+    "HTTP-SEMANTICS": {
+        "aliasOf": "RFC7231"
+    },
+    "WELL-KNOWN": {
+        "aliasOf": "RFC8615"
+    }
+}
+</pre>
+
+<pre class="anchors">
+spec: webauthn-2; urlPrefix: https://www.w3.org/TR/webauthn-2
+    type: dfn
+        text: authenticator; url: authenticator
+        text: client platform; url: client-platform
+        text: client side; url: client-side
+        text: webauthn client; url: webauthn-client
+        text: relying party; url: relying-party
+        text: relying party identifier; url: relying-party-identifier
+        text: RP ID; url: rp-id
+        text: webauthn relying party; url: webauthn-relying-party
+spec: webauthn-3; urlPrefix: https://www.w3.org/TR/webauthn-3
+    type: dfn
+        text: passkey; url: passkey
+</pre>
+
+<pre class="link-defaults">
+text:base;          type:argument;    spec:url
+text:form;          type:element;     spec:html
+text:Location;      type:http-header; spec:rfc7231
+text:origin;        type:dfn;         spec:url;
+text:request;       type:dfn;         spec:fetch; for:/
+text:response;      type:dfn;         spec:fetch; for:/
+text:URL;           type:interface;   spec:url
+text:url;           type:argument;    spec:url
+text:scheme;        type:dfn;         spec:url
+</pre>
+
+<div class="non-normative">
+
+<h2 id="intro">Introduction</h2>
+
+<em>This section is non-normative.</em>
+
+[=WebAuthn Relying Party|WebAuthn Relying Parties=] (RPs) currently lack a way to programmatically advertise they support [=passkeys=], where a user <span class="allow-2119">can</span> create a passkey, and where they can manage existing passkeys. By proposing a well-known URL which defines a set of passkey-specific endpoints, this specification enables WebAuthn clients and authenticators to link directly to workflow-specific endpoints instead of the user needing to dig through their account settings.
+
+</div>
+
+<h2 id="infra">Infrastructure</h2>
+
+This specification depends on the Infra Standard. [[!INFRA]]
+
+This specification uses terminology from the Fetch, HTML, HTTP, and URL standards. [[!FETCH]] [[!HTML]] [[!HTTP-SEMANTICS]] [[!URL]]
+
+<h2 id="semantics">Passkey Endpoints URLs</h2>
+
+To advertise support for [=passkeys=] and/or provide direct endpoints for passkey creation and management, [=Relying Party|Relying Parties=] MUST make a JSON document available at the path formed by concatenating the string `.well-known/passkey-endpoints` with the `https` [=scheme=] and [=relying party identifier=] as per [[WELL-KNOWN]].
+
+<p class=example>The passkey endpoints URL for [=RP ID=] `"example.com"` is `"https://example.com/.well-known/passkey-endpoints"`.
+
+<h3 id="response">Server Response</h3>
+
+The server in this context is a [=WebAuthn Relying Party=] supporting [=passkeys=].
+
+A successful response MUST use the 200 OK HTTP status code and return a JSON object using the `application/json` content type.
+
+:   enroll
+::  This OPTIONAL member contains a direct URL to the passkey creation page for a user account
+
+:   manage
+::  This OPTIONAL member contains a direct URL to the passkey management page for a user account
+
+
+<div class=example>
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+   "enroll": "https://example.com/account/manage/passkeys/create",
+   "manage": "https://example.com/account/manage/passkeys"
+}
+```
+</div>
+
+An empty JSON object CAN be returned to signal support for passkeys, but not advertise specific endpoints.
+
+<div class=example>
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{}
+```
+</div>
+
+<h3 id="clients">Client Processing</h3>
+
+A client in this context can be either a WebAuthn [=WebAuthn client|client=] or an [=authenticator=].
+
+Given a passkey's [=relying party identifier=], generate a passkey endpoints URL by running these steps:
+
+1.  Let |url| be a new {{URL}} with values set as follows:
+
+    :   [=url/scheme=]
+    ::  "https"
+    :   [=url/host=]
+    ::  the passkey's [=relying party identifier=]
+    :   [=url/port=]
+    ::  null
+    :   [=url/path=]
+    ::  « ".well-known", "passkey-endpoints" ».
+
+2.  Return |url|.
+
+<p class=example>The passkey endpoints URL for [=RP ID=] `"example.com"` is `"https://example.com/.well-known/passkey-endpoints"`.
+
+<h2 id="iana">IANA considerations</h2>
+
+<h3 id="the-change-password-well-known-uri">The `passkey-endpoints` well-known URI</h3>
+
+This document defines the "`.well-known`" URI `passkey-endpoints`.
+This registration will be submitted to the IESG for review, approval, and registration with IANA using the template defined in [[!WELL-KNOWN]] as follows:
+
+: URI suffix
+:: passkey-endpoints
+
+: Change controller
+:: W3C
+
+: Specification document(s)
+:: This document is the relevant specification. (See [[#response]])
+
+: Related information:
+:: None.
+
+<h2 id="acknowedgements" class="no-num">Acknowledgements</h2>
+
+Thanks to
+
+for their feedback on this proposal.

@@ -1,0 +1,7 @@
+{
+    "src_file": "passkey-endpoints.bs",
+    "type": "bikeshed",
+    "params": {
+      "force": 1
+    }
+  }
