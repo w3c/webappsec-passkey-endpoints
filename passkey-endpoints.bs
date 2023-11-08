@@ -9,7 +9,7 @@ URL: https://w3c.github.io/webappsec-change-password-url/
 TR: https://www.w3.org/TR/change-password-url/
 Editor: Tim Cappalli, w3cid 111190, Microsoft https://microsoft.com/, tim.cappalli@microsoft.com
 Abstract: This specification defines a well-known URL which WebAuthn
- Relying Parties (RPs)can host to make their creation and management
+ Relying Parties (RPs) can host to make their creation and management
  endpoints discoverable by WebAuthn clients and authenticators.
 Complain About: accidental-2119 true
 Markup Shorthands: idl yes, markdown yes
@@ -61,7 +61,7 @@ text:scheme;        type:dfn;         spec:url
 
 <em>This section is non-normative.</em>
 
-[=WebAuthn Relying Party|WebAuthn Relying Parties=] (RPs) currently lack a way to programmatically advertise they support [=passkeys=], where a user <span class="allow-2119">can</span> create a passkey, and where they can manage existing passkeys. By proposing a well-known URL which defines a set of passkey-specific endpoints, this specification enables WebAuthn clients and authenticators to link directly to workflow-specific endpoints instead of the user needing to dig through their account settings.
+[=WebAuthn Relying Party|WebAuthn Relying Parties=] (RPs) currently lack a way to programmatically advertise that they support [=passkeys=], where a user <span class="allow-2119">can</span> create a passkey, and where they can manage existing passkeys. By proposing a well-known URL which defines a set of passkey-specific endpoints, this specification enables WebAuthn clients and authenticators to link directly to workflow-specific endpoints instead of the user needing to dig through their account settings.
 
 </div>
 
@@ -73,7 +73,7 @@ This specification uses terminology from the Fetch, HTML, HTTP, and URL standard
 
 <h2 id="semantics">Passkey Endpoints URLs</h2>
 
-To advertise support for [=passkeys=] and/or provide direct endpoints for passkey creation and management, [=Relying Party|Relying Parties=] MUST make a JSON document available at the path formed by concatenating the string `.well-known/passkey-endpoints` with the `https` [=scheme=] and [=relying party identifier=] as per [[WELL-KNOWN]].
+To advertise support for [=passkeys=] and/or provide direct endpoints for passkey creation and management, [=Relying Party|Relying Parties=] MUST host a JSON document at the path formed by concatenating the string `.well-known/passkey-endpoints` with the `https` [=scheme=] and [=relying party identifier=] as per [[WELL-KNOWN]]. A redirect MUST not be returned.
 
 <p class=example>The passkey endpoints URL for [=RP ID=] `"example.com"` is `"https://example.com/.well-known/passkey-endpoints"`.
 
@@ -82,6 +82,8 @@ To advertise support for [=passkeys=] and/or provide direct endpoints for passke
 The server in this context is a [=WebAuthn Relying Party=] supporting [=passkeys=].
 
 A successful response MUST use the 200 OK HTTP status code and return a JSON object using the `application/json` content type.
+
+The returned JSON object can contain any of the members defined below.
 
 :   enroll
 ::  This OPTIONAL member contains a direct URL to the passkey creation page for a user account
