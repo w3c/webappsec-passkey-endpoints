@@ -7,7 +7,7 @@
   <link href="https://www.w3.org/StyleSheets/TR/2021/W3C-WD" rel="stylesheet">
   <meta content="Bikeshed version 82ce88815, updated Thu Sep 7 16:33:55 2023 -0700" name="generator">
   <link href="https://www.w3.org/TR/change-password-url/" rel="canonical">
-  <meta content="cd47de50eb08d67efffb2f62926bbdb38cd03dae" name="document-revision">
+  <meta content="5edcaabb21eeee2880fce6a253dccc279da01e9e" name="document-revision">
 <style>/* Boilerplate: style-autolinks */
 .css.css, .property.property, .descriptor.descriptor {
     color: var(--a-normal-text);
@@ -588,13 +588,13 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">A Well-Known URL for Passkey Endpoints</h1>
-   <p id="w3c-state"><a href="https://www.w3.org/standards/types#WD">W3C Working Draft</a>, <time class="dt-updated" datetime="2023-11-07">7 November 2023</time></p>
+   <p id="w3c-state"><a href="https://www.w3.org/standards/types#WD">W3C Working Draft</a>, <time class="dt-updated" datetime="2023-11-08">8 November 2023</time></p>
    <details open>
     <summary>More details about this document</summary>
     <div data-fill-with="spec-metadata">
      <dl>
       <dt>This version:
-      <dd><a class="u-url" href="https://www.w3.org/TR/2023/WD-passkey-endpoints-20231107/">https://www.w3.org/TR/2023/WD-passkey-endpoints-20231107/</a>
+      <dd><a class="u-url" href="https://www.w3.org/TR/2023/WD-passkey-endpoints-20231108/">https://www.w3.org/TR/2023/WD-passkey-endpoints-20231108/</a>
       <dt>Latest published version:
       <dd><a href="https://www.w3.org/TR/change-password-url/">https://www.w3.org/TR/change-password-url/</a>
       <dt>Editor's Draft:
@@ -617,7 +617,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <h2 class="no-num no-toc no-ref heading settled" id="abstract"><span class="content">Abstract</span></h2>
    <p>This specification defines a well-known URL which WebAuthn
 
- Relying Parties (RPs)can host to make their creation and management
+ Relying Parties (RPs) can host to make their creation and management
  endpoints discoverable by WebAuthn clients and authenticators.</p>
   </div>
   <h2 class="no-num no-toc no-ref heading settled" id="sotd"><span class="content">Status of this document</span></h2>
@@ -687,17 +687,18 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <div class="non-normative">
     <h2 class="heading settled" data-level="1" id="intro"><span class="secno">1. </span><span class="content">Introduction</span><a class="self-link" href="#intro"></a></h2>
     <p><em>This section is non-normative.</em></p>
-    <p><a data-link-type="dfn" href="https://www.w3.org/TR/webauthn-2#webauthn-relying-party" id="ref-for-webauthn-relying-party">WebAuthn Relying Parties</a> (RPs) currently lack a way to programmatically advertise they support <a data-link-type="dfn" href="https://www.w3.org/TR/webauthn-3#passkey" id="ref-for-passkey">passkeys</a>, where a user <span class="allow-2119">can</span> create a passkey, and where they can manage existing passkeys. By proposing a well-known URL which defines a set of passkey-specific endpoints, this specification enables WebAuthn clients and authenticators to link directly to workflow-specific endpoints instead of the user needing to dig through their account settings.</p>
+    <p><a data-link-type="dfn" href="https://www.w3.org/TR/webauthn-2#webauthn-relying-party" id="ref-for-webauthn-relying-party">WebAuthn Relying Parties</a> (RPs) currently lack a way to programmatically advertise that they support <a data-link-type="dfn" href="https://www.w3.org/TR/webauthn-3#passkey" id="ref-for-passkey">passkeys</a>, where a user <span class="allow-2119">can</span> create a passkey, and where they can manage existing passkeys. By proposing a well-known URL which defines a set of passkey-specific endpoints, this specification enables WebAuthn clients and authenticators to link directly to workflow-specific endpoints instead of the user needing to dig through their account settings.</p>
    </div>
    <h2 class="heading settled" data-level="2" id="infra"><span class="secno">2. </span><span class="content">Infrastructure</span><a class="self-link" href="#infra"></a></h2>
    <p>This specification depends on the Infra Standard. <a data-link-type="biblio" href="#biblio-infra" title="Infra Standard">[INFRA]</a></p>
    <p>This specification uses terminology from the Fetch, HTML, HTTP, and URL standards. <a data-link-type="biblio" href="#biblio-fetch" title="Fetch Standard">[FETCH]</a> <a data-link-type="biblio" href="#biblio-html" title="HTML Standard">[HTML]</a> <a data-link-type="biblio" href="#biblio-http-semantics" title="HTTP Semantics">[HTTP-SEMANTICS]</a> <a data-link-type="biblio" href="#biblio-url" title="URL Standard">[URL]</a></p>
    <h2 class="heading settled" data-level="3" id="semantics"><span class="secno">3. </span><span class="content">Passkey Endpoints URLs</span><a class="self-link" href="#semantics"></a></h2>
-   <p>To advertise support for <a data-link-type="dfn" href="https://www.w3.org/TR/webauthn-3#passkey" id="ref-for-passkey①">passkeys</a> and/or provide direct endpoints for passkey creation and management, <a data-link-type="dfn" href="https://www.w3.org/TR/webauthn-2#relying-party" id="ref-for-relying-party">Relying Parties</a> MUST make a JSON document available at the path formed by concatenating the string <code>.well-known/passkey-endpoints</code> with the <code>https</code> <a data-link-type="dfn" href="https://url.spec.whatwg.org/#concept-url-scheme" id="ref-for-concept-url-scheme">scheme</a> and <a data-link-type="dfn" href="https://www.w3.org/TR/webauthn-2#relying-party-identifier" id="ref-for-relying-party-identifier">relying party identifier</a> as per <a data-link-type="biblio" href="#biblio-well-known" title="Well-Known Uniform Resource Identifiers (URIs)">[WELL-KNOWN]</a>.</p>
+   <p>To advertise support for <a data-link-type="dfn" href="https://www.w3.org/TR/webauthn-3#passkey" id="ref-for-passkey①">passkeys</a> and/or provide direct endpoints for passkey creation and management, <a data-link-type="dfn" href="https://www.w3.org/TR/webauthn-2#relying-party" id="ref-for-relying-party">Relying Parties</a> MUST host a JSON document at the path formed by concatenating the string <code>.well-known/passkey-endpoints</code> with the <code>https</code> <a data-link-type="dfn" href="https://url.spec.whatwg.org/#concept-url-scheme" id="ref-for-concept-url-scheme">scheme</a> and <a data-link-type="dfn" href="https://www.w3.org/TR/webauthn-2#relying-party-identifier" id="ref-for-relying-party-identifier">relying party identifier</a> as per <a data-link-type="biblio" href="#biblio-well-known" title="Well-Known Uniform Resource Identifiers (URIs)">[WELL-KNOWN]</a>. A redirect MUST not be returned.</p>
    <p class="example" id="example-0ea3bd03"><a class="self-link" href="#example-0ea3bd03"></a>The passkey endpoints URL for <a data-link-type="dfn" href="https://www.w3.org/TR/webauthn-2#rp-id" id="ref-for-rp-id">RP ID</a> <code>"example.com"</code> is <code>"https://example.com/.well-known/passkey-endpoints"</code>. </p>
    <h3 class="heading settled" data-level="3.1" id="response"><span class="secno">3.1. </span><span class="content">Server Response</span><a class="self-link" href="#response"></a></h3>
    <p>The server in this context is a <a data-link-type="dfn" href="https://www.w3.org/TR/webauthn-2#webauthn-relying-party" id="ref-for-webauthn-relying-party①">WebAuthn Relying Party</a> supporting <a data-link-type="dfn" href="https://www.w3.org/TR/webauthn-3#passkey" id="ref-for-passkey②">passkeys</a>.</p>
    <p>A successful response MUST use the 200 OK HTTP status code and return a JSON object using the <code>application/json</code> content type.</p>
+   <p>The returned JSON object can contain any of the members defined below.</p>
    <dl>
     <dt data-md>enroll
     <dd data-md>
