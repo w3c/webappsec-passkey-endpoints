@@ -5,8 +5,8 @@ Level: None
 Status: WD
 Group: WebAppSec
 Repository: ms-id-standards/webappsec-passkey-endpoints
-URL: https://w3c.github.io/webappsec-change-password-url/
-TR: https://www.w3.org/TR/change-password-url/
+URL: https://w3c.github.io/webappsec-passkey-endpoints/
+TR: https://www.w3.org/TR/passkey-endpoints/
 Editor: Tim Cappalli, w3cid 111190, Microsoft https://microsoft.com/, tim.cappalli@microsoft.com
 Abstract: This specification defines a well-known URL which WebAuthn
  Relying Parties (RPs) can host to make their creation and management
@@ -138,7 +138,7 @@ Given a passkey's [=relying party identifier=], generate a passkey endpoints URL
 
 <h2 id="iana">IANA considerations</h2>
 
-<h3 id="the-change-password-well-known-uri">The `passkey-endpoints` well-known URI</h3>
+<h3 id="the-passkey-endpoints-well-known-uri">The `passkey-endpoints` well-known URI</h3>
 
 This document defines the "`.well-known`" URI `passkey-endpoints`.
 This registration will be submitted to the IESG for review, approval, and registration with IANA using the template defined in [[!WELL-KNOWN]] as follows:
