@@ -2,11 +2,10 @@
 Title: A Well-Known URL for Passkey Endpoints
 Shortname: passkey-endpoints
 Level: None
-Status: WD
+Status: ED
 Group: WebAppSec
-Repository: ms-id-standards/webappsec-passkey-endpoints
-URL: https://w3c.github.io/webappsec-change-password-url/
-TR: https://www.w3.org/TR/change-password-url/
+Repository: w3c/webappsec-passkey-endpoints
+URL: https://w3c.github.io/webappsec-passkey-endpoints/passkey-endpoints.html
 Editor: Tim Cappalli, w3cid 111190, Microsoft https://microsoft.com/, tim.cappalli@microsoft.com
 Abstract: This specification defines a well-known URL which WebAuthn
  Relying Parties (RPs) can host to make their creation and management
