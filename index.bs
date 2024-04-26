@@ -5,8 +5,9 @@ Level: None
 Status: ED
 Group: WebAppSec
 Repository: w3c/webappsec-passkey-endpoints
-URL: https://w3c.github.io/webappsec-passkey-endpoints/passkey-endpoints.html
-Editor: Tim Cappalli, w3cid 111190, Microsoft https://microsoft.com/, tim.cappalli@microsoft.com
+URL: https://w3c.github.io/webappsec-passkey-endpoints/
+TR: https://www.w3.org/TR/passkey-endpoints/
+Editor: Tim Cappalli, w3cid 111190, Okta https://www.okta.com/, tim.cappalli@okta.com
 Abstract: This specification defines a well-known URL which WebAuthn
  Relying Parties (RPs) can host to make their creation and management
  endpoints discoverable by WebAuthn clients and authenticators.
