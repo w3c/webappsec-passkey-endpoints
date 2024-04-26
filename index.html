@@ -1,0 +1,1224 @@
+<!doctype html><html lang="en">
+ <head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+  <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+  <title>A Well-Known URL for Passkey Endpoints</title>
+  <meta content="ED" name="w3c-status">
+  <link href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED" rel="stylesheet">
+  <meta content="Bikeshed version 82ce88815, updated Thu Sep 7 16:33:55 2023 -0700" name="generator">
+  <link href="https://www.w3.org/TR/passkey-endpoints/" rel="canonical">
+  <meta content="97706ba4e27a3d4ff2de20bb5a1ddc83e5643dd9" name="document-revision">
+<style>/* Boilerplate: style-autolinks */
+.css.css, .property.property, .descriptor.descriptor {
+    color: var(--a-normal-text);
+    font-size: inherit;
+    font-family: inherit;
+}
+.css::before, .property::before, .descriptor::before {
+    content: "‘";
+}
+.css::after, .property::after, .descriptor::after {
+    content: "’";
+}
+.property, .descriptor {
+    /* Don't wrap property and descriptor names */
+    white-space: nowrap;
+}
+.type { /* CSS value <type> */
+    font-style: italic;
+}
+pre .property::before, pre .property::after {
+    content: "";
+}
+[data-link-type="property"]::before,
+[data-link-type="propdesc"]::before,
+[data-link-type="descriptor"]::before,
+[data-link-type="value"]::before,
+[data-link-type="function"]::before,
+[data-link-type="at-rule"]::before,
+[data-link-type="selector"]::before,
+[data-link-type="maybe"]::before {
+    content: "‘";
+}
+[data-link-type="property"]::after,
+[data-link-type="propdesc"]::after,
+[data-link-type="descriptor"]::after,
+[data-link-type="value"]::after,
+[data-link-type="function"]::after,
+[data-link-type="at-rule"]::after,
+[data-link-type="selector"]::after,
+[data-link-type="maybe"]::after {
+    content: "’";
+}
+
+[data-link-type].production::before,
+[data-link-type].production::after,
+.prod [data-link-type]::before,
+.prod [data-link-type]::after {
+    content: "";
+}
+
+[data-link-type=element],
+[data-link-type=element-attr] {
+    font-family: Menlo, Consolas, "DejaVu Sans Mono", monospace;
+    font-size: .9em;
+}
+[data-link-type=element]::before { content: "<" }
+[data-link-type=element]::after  { content: ">" }
+
+[data-link-type=biblio] {
+    white-space: pre;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --selflink-text: black;
+        --selflink-bg: silver;
+        --selflink-hover-text: white;
+    }
+}
+</style>
+<style>/* Boilerplate: style-colors */
+
+/* Any --*-text not paired with a --*-bg is assumed to have a transparent bg */
+:root {
+    color-scheme: light dark;
+
+    --text: black;
+    --bg: white;
+
+    --unofficial-watermark: url(https://www.w3.org/StyleSheets/TR/2016/logos/UD-watermark);
+
+    --logo-bg: #1a5e9a;
+    --logo-active-bg: #c00;
+    --logo-text: white;
+
+    --tocnav-normal-text: #707070;
+    --tocnav-normal-bg: var(--bg);
+    --tocnav-hover-text: var(--tocnav-normal-text);
+    --tocnav-hover-bg: #f8f8f8;
+    --tocnav-active-text: #c00;
+    --tocnav-active-bg: var(--tocnav-normal-bg);
+
+    --tocsidebar-text: var(--text);
+    --tocsidebar-bg: #f7f8f9;
+    --tocsidebar-shadow: rgba(0,0,0,.1);
+    --tocsidebar-heading-text: hsla(203,20%,40%,.7);
+
+    --toclink-text: var(--text);
+    --toclink-underline: #3980b5;
+    --toclink-visited-text: var(--toclink-text);
+    --toclink-visited-underline: #054572;
+
+    --heading-text: #005a9c;
+
+    --hr-text: var(--text);
+
+    --algo-border: #def;
+
+    --del-text: red;
+    --del-bg: transparent;
+    --ins-text: #080;
+    --ins-bg: transparent;
+
+    --a-normal-text: #034575;
+    --a-normal-underline: #bbb;
+    --a-visited-text: var(--a-normal-text);
+    --a-visited-underline: #707070;
+    --a-hover-bg: rgba(75%, 75%, 75%, .25);
+    --a-active-text: #c00;
+    --a-active-underline: #c00;
+
+    --blockquote-border: silver;
+    --blockquote-bg: transparent;
+    --blockquote-text: currentcolor;
+
+    --issue-border: #e05252;
+    --issue-bg: #fbe9e9;
+    --issue-text: var(--text);
+    --issueheading-text: #831616;
+
+    --example-border: #e0cb52;
+    --example-bg: #fcfaee;
+    --example-text: var(--text);
+    --exampleheading-text: #574b0f;
+
+    --note-border: #52e052;
+    --note-bg: #e9fbe9;
+    --note-text: var(--text);
+    --noteheading-text: hsl(120, 70%, 30%);
+    --notesummary-underline: silver;
+
+    --assertion-border: #aaa;
+    --assertion-bg: #eee;
+    --assertion-text: black;
+
+    --advisement-border: orange;
+    --advisement-bg: #fec;
+    --advisement-text: var(--text);
+    --advisementheading-text: #b35f00;
+
+    --warning-border: red;
+    --warning-bg: hsla(40,100%,50%,0.95);
+    --warning-text: var(--text);
+
+    --amendment-border: #330099;
+    --amendment-bg: #F5F0FF;
+    --amendment-text: var(--text);
+    --amendmentheading-text: #220066;
+
+    --def-border: #8ccbf2;
+    --def-bg: #def;
+    --def-text: var(--text);
+    --defrow-border: #bbd7e9;
+
+    --datacell-border: silver;
+
+    --indexinfo-text: #707070;
+
+    --indextable-hover-text: black;
+    --indextable-hover-bg: #f7f8f9;
+
+    --outdatedspec-bg: rgba(0, 0, 0, .5);
+    --outdatedspec-text: black;
+    --outdated-bg: maroon;
+    --outdated-text: white;
+    --outdated-shadow: red;
+
+    --editedrec-bg: darkorange;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text: #ddd;
+        --bg: black;
+
+        --unofficial-watermark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cg fill='%23100808' transform='translate(200 200) rotate(-45) translate(-200 -200)' stroke='%23100808' stroke-width='3'%3E%3Ctext x='50%25' y='220' style='font: bold 70px sans-serif; text-anchor: middle; letter-spacing: 6px;'%3EUNOFFICIAL%3C/text%3E%3Ctext x='50%25' y='305' style='font: bold 70px sans-serif; text-anchor: middle; letter-spacing: 6px;'%3EDRAFT%3C/text%3E%3C/g%3E%3C/svg%3E");
+
+        --logo-bg: #1a5e9a;
+        --logo-active-bg: #c00;
+        --logo-text: white;
+
+        --tocnav-normal-text: #999;
+        --tocnav-normal-bg: var(--bg);
+        --tocnav-hover-text: var(--tocnav-normal-text);
+        --tocnav-hover-bg: #080808;
+        --tocnav-active-text: #f44;
+        --tocnav-active-bg: var(--tocnav-normal-bg);
+
+        --tocsidebar-text: var(--text);
+        --tocsidebar-bg: #080808;
+        --tocsidebar-shadow: rgba(255,255,255,.1);
+        --tocsidebar-heading-text: hsla(203,20%,40%,.7);
+
+        --toclink-text: var(--text);
+        --toclink-underline: #6af;
+        --toclink-visited-text: var(--toclink-text);
+        --toclink-visited-underline: #054572;
+
+        --heading-text: #8af;
+
+        --hr-text: var(--text);
+
+        --algo-border: #456;
+
+        --del-text: #f44;
+        --del-bg: transparent;
+        --ins-text: #4a4;
+        --ins-bg: transparent;
+
+        --a-normal-text: #6af;
+        --a-normal-underline: #555;
+        --a-visited-text: var(--a-normal-text);
+        --a-visited-underline: var(--a-normal-underline);
+        --a-hover-bg: rgba(25%, 25%, 25%, .2);
+        --a-active-text: #f44;
+        --a-active-underline: var(--a-active-text);
+
+        --borderedblock-bg: rgba(255, 255, 255, .05);
+
+        --blockquote-border: silver;
+        --blockquote-bg: var(--borderedblock-bg);
+        --blockquote-text: currentcolor;
+
+        --issue-border: #e05252;
+        --issue-bg: var(--borderedblock-bg);
+        --issue-text: var(--text);
+        --issueheading-text: hsl(0deg, 70%, 70%);
+
+        --example-border: hsl(50deg, 90%, 60%);
+        --example-bg: var(--borderedblock-bg);
+        --example-text: var(--text);
+        --exampleheading-text: hsl(50deg, 70%, 70%);
+
+        --note-border: hsl(120deg, 100%, 35%);
+        --note-bg: var(--borderedblock-bg);
+        --note-text: var(--text);
+        --noteheading-text: hsl(120, 70%, 70%);
+        --notesummary-underline: silver;
+
+        --assertion-border: #444;
+        --assertion-bg: var(--borderedblock-bg);
+        --assertion-text: var(--text);
+
+        --advisement-border: orange;
+        --advisement-bg: #222218;
+        --advisement-text: var(--text);
+        --advisementheading-text: #f84;
+
+        --warning-border: red;
+        --warning-bg: hsla(40,100%,20%,0.95);
+        --warning-text: var(--text);
+
+        --amendment-border: #330099;
+        --amendment-bg: #080010;
+        --amendment-text: var(--text);
+        --amendmentheading-text: #cc00ff;
+
+        --def-border: #8ccbf2;
+        --def-bg: #080818;
+        --def-text: var(--text);
+        --defrow-border: #136;
+
+        --datacell-border: silver;
+
+        --indexinfo-text: #aaa;
+
+        --indextable-hover-text: var(--text);
+        --indextable-hover-bg: #181818;
+
+        --outdatedspec-bg: rgba(255, 255, 255, .5);
+        --outdatedspec-text: black;
+        --outdated-bg: maroon;
+        --outdated-text: white;
+        --outdated-shadow: red;
+
+        --editedrec-bg: darkorange;
+    }
+    /* In case a transparent-bg image doesn't expect to be on a dark bg,
+       which is quite common in practice... */
+    img { background: white; }
+}
+</style>
+<style>/* Boilerplate: style-counters */
+body {
+    counter-reset: example figure issue;
+}
+.issue {
+    counter-increment: issue;
+}
+.issue:not(.no-marker)::before {
+    content: "Issue " counter(issue);
+}
+
+.example {
+    counter-increment: example;
+}
+.example:not(.no-marker)::before {
+    content: "Example " counter(example);
+}
+.invalid.example:not(.no-marker)::before,
+.illegal.example:not(.no-marker)::before {
+    content: "Invalid Example" counter(example);
+}
+
+figcaption {
+    counter-increment: figure;
+}
+figcaption:not(.no-marker)::before {
+    content: "Figure " counter(figure) " ";
+}
+</style>
+<style>/* Boilerplate: style-dfn-panel */
+:root {
+    --dfnpanel-bg: #ddd;
+    --dfnpanel-text: var(--text);
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        --dfnpanel-bg: #222;
+        --dfnpanel-text: var(--text);
+    }
+}
+.dfn-panel {
+    position: absolute;
+    z-index: 35;
+    width: 20em;
+    width: 300px;
+    height: auto;
+    max-height: 500px;
+    overflow: auto;
+    padding: 0.5em 0.75em;
+    font: small Helvetica Neue, sans-serif, Droid Sans Fallback;
+    background: var(--dfnpanel-bg);
+    color: var(--dfnpanel-text);
+    border: outset 0.2em;
+    white-space: normal; /* in case it's moved into a pre */
+}
+.dfn-panel:not(.on) { display: none; }
+.dfn-panel * { margin: 0; padding: 0; text-indent: 0; }
+.dfn-panel > b { display: block; }
+.dfn-panel a { color: var(--dfnpanel-text); }
+.dfn-panel a:not(:hover) { text-decoration: none !important; border-bottom: none !important; }
+.dfn-panel > b + b { margin-top: 0.25em; }
+.dfn-panel ul { padding: 0 0 0 1em; list-style: none; }
+.dfn-panel li a {
+    white-space: pre;
+    display: inline-block;
+    max-width: calc(300px - 1.5em - 1em);
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.dfn-panel.activated {
+    display: inline-block;
+    position: fixed;
+    left: .5em;
+    bottom: 2em;
+    margin: 0 auto;
+    max-width: calc(100vw - 1.5em - .4em - .5em);
+    max-height: 30vh;
+}
+
+.dfn-paneled[role="button"] { cursor: pointer; }
+</style>
+<style>/* Boilerplate: style-issues */
+a[href].issue-return {
+    float: right;
+    float: inline-end;
+    color: var(--issueheading-text);
+    font-weight: bold;
+    text-decoration: none;
+}
+</style>
+<style>/* Boilerplate: style-md-lists */
+/* This is a weird hack for me not yet following the commonmark spec
+   regarding paragraph and lists. */
+[data-md] > :first-child {
+    margin-top: 0;
+}
+[data-md] > :last-child {
+    margin-bottom: 0;
+}
+</style>
+<style>/* Boilerplate: style-selflinks */
+
+:root {
+    --selflink-text: white;
+    --selflink-bg: gray;
+    --selflink-hover-text: black;
+}
+.heading, .issue, .note, .example, li, dt {
+    position: relative;
+}
+a.self-link {
+    position: absolute;
+    top: 0;
+    left: calc(-1 * (3.5rem - 26px));
+    width: calc(3.5rem - 26px);
+    height: 2em;
+    text-align: center;
+    border: none;
+    transition: opacity .2s;
+    opacity: .5;
+}
+a.self-link:hover {
+    opacity: 1;
+}
+.heading > a.self-link {
+    font-size: 83%;
+}
+.example > a.self-link,
+.note > a.self-link,
+.issue > a.self-link {
+    /* These blocks are overflow:auto, so positioning outside
+       doesn't work. */
+    left: auto;
+    right: 0;
+}
+li > a.self-link {
+    left: calc(-1 * (3.5rem - 26px) - 2em);
+}
+dfn > a.self-link {
+    top: auto;
+    left: auto;
+    opacity: 0;
+    width: 1.5em;
+    height: 1.5em;
+    background: var(--selflink-bg);
+    color: var(--selflink-text);
+    font-style: normal;
+    transition: opacity .2s, background-color .2s, color .2s;
+}
+dfn:hover > a.self-link {
+    opacity: 1;
+}
+dfn > a.self-link:hover {
+    color: var(--selflink-hover-text);
+}
+
+a.self-link::before            { content: "¶"; }
+.heading > a.self-link::before { content: "§"; }
+dfn > a.self-link::before      { content: "#"; }
+</style>
+<style>/* Boilerplate: style-syntax-highlighting */
+
+code.highlight { padding: .1em; border-radius: .3em; }
+pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em 0; overflow: auto; border-radius: 0; }
+
+.highlight:not(.idl) { background: rgba(0, 0, 0, .03); }
+c-[a] { color: #990055 } /* Keyword.Declaration */
+c-[b] { color: #990055 } /* Keyword.Type */
+c-[c] { color: #708090 } /* Comment */
+c-[d] { color: #708090 } /* Comment.Multiline */
+c-[e] { color: #0077aa } /* Name.Attribute */
+c-[f] { color: #669900 } /* Name.Tag */
+c-[g] { color: #222222 } /* Name.Variable */
+c-[k] { color: #990055 } /* Keyword */
+c-[l] { color: #000000 } /* Literal */
+c-[m] { color: #000000 } /* Literal.Number */
+c-[n] { color: #0077aa } /* Name */
+c-[o] { color: #999999 } /* Operator */
+c-[p] { color: #999999 } /* Punctuation */
+c-[s] { color: #a67f59 } /* Literal.String */
+c-[t] { color: #a67f59 } /* Literal.String.Single */
+c-[u] { color: #a67f59 } /* Literal.String.Double */
+c-[cp] { color: #708090 } /* Comment.Preproc */
+c-[c1] { color: #708090 } /* Comment.Single */
+c-[cs] { color: #708090 } /* Comment.Special */
+c-[kc] { color: #990055 } /* Keyword.Constant */
+c-[kn] { color: #990055 } /* Keyword.Namespace */
+c-[kp] { color: #990055 } /* Keyword.Pseudo */
+c-[kr] { color: #990055 } /* Keyword.Reserved */
+c-[ld] { color: #000000 } /* Literal.Date */
+c-[nc] { color: #0077aa } /* Name.Class */
+c-[no] { color: #0077aa } /* Name.Constant */
+c-[nd] { color: #0077aa } /* Name.Decorator */
+c-[ni] { color: #0077aa } /* Name.Entity */
+c-[ne] { color: #0077aa } /* Name.Exception */
+c-[nf] { color: #0077aa } /* Name.Function */
+c-[nl] { color: #0077aa } /* Name.Label */
+c-[nn] { color: #0077aa } /* Name.Namespace */
+c-[py] { color: #0077aa } /* Name.Property */
+c-[ow] { color: #999999 } /* Operator.Word */
+c-[mb] { color: #000000 } /* Literal.Number.Bin */
+c-[mf] { color: #000000 } /* Literal.Number.Float */
+c-[mh] { color: #000000 } /* Literal.Number.Hex */
+c-[mi] { color: #000000 } /* Literal.Number.Integer */
+c-[mo] { color: #000000 } /* Literal.Number.Oct */
+c-[sb] { color: #a67f59 } /* Literal.String.Backtick */
+c-[sc] { color: #a67f59 } /* Literal.String.Char */
+c-[sd] { color: #a67f59 } /* Literal.String.Doc */
+c-[se] { color: #a67f59 } /* Literal.String.Escape */
+c-[sh] { color: #a67f59 } /* Literal.String.Heredoc */
+c-[si] { color: #a67f59 } /* Literal.String.Interpol */
+c-[sx] { color: #a67f59 } /* Literal.String.Other */
+c-[sr] { color: #a67f59 } /* Literal.String.Regex */
+c-[ss] { color: #a67f59 } /* Literal.String.Symbol */
+c-[vc] { color: #0077aa } /* Name.Variable.Class */
+c-[vg] { color: #0077aa } /* Name.Variable.Global */
+c-[vi] { color: #0077aa } /* Name.Variable.Instance */
+c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
+
+
+@media (prefers-color-scheme: dark) {
+    .highlight:not(.idl) { background: rgba(255, 255, 255, .05); }
+
+    c-[a] { color: #d33682 } /* Keyword.Declaration */
+    c-[b] { color: #d33682 } /* Keyword.Type */
+    c-[c] { color: #2aa198 } /* Comment */
+    c-[d] { color: #2aa198 } /* Comment.Multiline */
+    c-[e] { color: #268bd2 } /* Name.Attribute */
+    c-[f] { color: #b58900 } /* Name.Tag */
+    c-[g] { color: #cb4b16 } /* Name.Variable */
+    c-[k] { color: #d33682 } /* Keyword */
+    c-[l] { color: #657b83 } /* Literal */
+    c-[m] { color: #657b83 } /* Literal.Number */
+    c-[n] { color: #268bd2 } /* Name */
+    c-[o] { color: #657b83 } /* Operator */
+    c-[p] { color: #657b83 } /* Punctuation */
+    c-[s] { color: #6c71c4 } /* Literal.String */
+    c-[t] { color: #6c71c4 } /* Literal.String.Single */
+    c-[u] { color: #6c71c4 } /* Literal.String.Double */
+    c-[ch] { color: #2aa198 } /* Comment.Hashbang */
+    c-[cp] { color: #2aa198 } /* Comment.Preproc */
+    c-[cpf] { color: #2aa198 } /* Comment.PreprocFile */
+    c-[c1] { color: #2aa198 } /* Comment.Single */
+    c-[cs] { color: #2aa198 } /* Comment.Special */
+    c-[kc] { color: #d33682 } /* Keyword.Constant */
+    c-[kn] { color: #d33682 } /* Keyword.Namespace */
+    c-[kp] { color: #d33682 } /* Keyword.Pseudo */
+    c-[kr] { color: #d33682 } /* Keyword.Reserved */
+    c-[ld] { color: #657b83 } /* Literal.Date */
+    c-[nc] { color: #268bd2 } /* Name.Class */
+    c-[no] { color: #268bd2 } /* Name.Constant */
+    c-[nd] { color: #268bd2 } /* Name.Decorator */
+    c-[ni] { color: #268bd2 } /* Name.Entity */
+    c-[ne] { color: #268bd2 } /* Name.Exception */
+    c-[nf] { color: #268bd2 } /* Name.Function */
+    c-[nl] { color: #268bd2 } /* Name.Label */
+    c-[nn] { color: #268bd2 } /* Name.Namespace */
+    c-[py] { color: #268bd2 } /* Name.Property */
+    c-[ow] { color: #657b83 } /* Operator.Word */
+    c-[mb] { color: #657b83 } /* Literal.Number.Bin */
+    c-[mf] { color: #657b83 } /* Literal.Number.Float */
+    c-[mh] { color: #657b83 } /* Literal.Number.Hex */
+    c-[mi] { color: #657b83 } /* Literal.Number.Integer */
+    c-[mo] { color: #657b83 } /* Literal.Number.Oct */
+    c-[sa] { color: #6c71c4 } /* Literal.String.Affix */
+    c-[sb] { color: #6c71c4 } /* Literal.String.Backtick */
+    c-[sc] { color: #6c71c4 } /* Literal.String.Char */
+    c-[dl] { color: #6c71c4 } /* Literal.String.Delimiter */
+    c-[sd] { color: #6c71c4 } /* Literal.String.Doc */
+    c-[se] { color: #6c71c4 } /* Literal.String.Escape */
+    c-[sh] { color: #6c71c4 } /* Literal.String.Heredoc */
+    c-[si] { color: #6c71c4 } /* Literal.String.Interpol */
+    c-[sx] { color: #6c71c4 } /* Literal.String.Other */
+    c-[sr] { color: #6c71c4 } /* Literal.String.Regex */
+    c-[ss] { color: #6c71c4 } /* Literal.String.Symbol */
+    c-[fm] { color: #268bd2 } /* Name.Function.Magic */
+    c-[vc] { color: #cb4b16 } /* Name.Variable.Class */
+    c-[vg] { color: #cb4b16 } /* Name.Variable.Global */
+    c-[vi] { color: #cb4b16 } /* Name.Variable.Instance */
+    c-[vm] { color: #cb4b16 } /* Name.Variable.Magic */
+    c-[il] { color: #657b83 } /* Literal.Number.Integer.Long */
+}
+</style>
+ <body class="h-entry">
+  <div class="head">
+   <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72"> </a> </p>
+   <h1 class="p-name no-ref" id="title">A Well-Known URL for Passkey Endpoints</h1>
+   <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">Editor’s Draft</a>, <time class="dt-updated" datetime="2024-04-26">26 April 2024</time></p>
+   <details open>
+    <summary>More details about this document</summary>
+    <div data-fill-with="spec-metadata">
+     <dl>
+      <dt>This version:
+      <dd><a class="u-url" href="https://w3c.github.io/webappsec-passkey-endpoints/">https://w3c.github.io/webappsec-passkey-endpoints/</a>
+      <dt>Latest published version:
+      <dd><a href="https://www.w3.org/TR/passkey-endpoints/">https://www.w3.org/TR/passkey-endpoints/</a>
+      <dt>Feedback:
+      <dd><span><a href="mailto:public-webappsec@w3.org?subject=%5Bpasskey-endpoints%5D%20YOUR%20TOPIC%20HERE">public-webappsec@w3.org</a> with subject line “<kbd>[passkey-endpoints] <i data-lt>… message topic …</i></kbd>” (<a href="https://lists.w3.org/Archives/Public/public-webappsec/" rel="discussion">archives</a>)</span>
+      <dd><a href="https://github.com/w3c/webappsec-passkey-endpoints/issues/">GitHub</a>
+      <dt class="editor">Editor:
+      <dd class="editor p-author h-card vcard" data-editor-id="111190"><a class="p-name fn u-email email" href="mailto:tim.cappalli@okta.com">Tim Cappalli</a> (<a class="p-org org" href="https://www.okta.com/">Okta</a>)
+     </dl>
+    </div>
+   </details>
+   <div data-fill-with="warning"></div>
+   <p class="copyright" data-fill-with="copyright"><a href="https://www.w3.org/policies/#copyright">Copyright</a> © 2024 <a href="https://www.w3.org/">World Wide Web Consortium</a>. <abbr title="World Wide Web Consortium">W3C</abbr><sup>®</sup> <a href="https://www.w3.org/policies/#Legal_Disclaimer">liability</a>, <a href="https://www.w3.org/policies/#W3C_Trademarks">trademark</a> and <a href="https://www.w3.org/copyright/software-license/" rel="license" title="W3C Software and Document License">permissive document license</a> rules apply. </p>
+   <hr title="Separator for header">
+  </div>
+  <div class="p-summary" data-fill-with="abstract">
+   <h2 class="no-num no-toc no-ref heading settled" id="abstract"><span class="content">Abstract</span></h2>
+   <p>This specification defines a well-known URL which WebAuthn
+
+ Relying Parties (RPs) can host to make their creation and management
+ endpoints discoverable by WebAuthn clients and authenticators.</p>
+  </div>
+  <h2 class="no-num no-toc no-ref heading settled" id="sotd"><span class="content">Status of this document</span></h2>
+  <div data-fill-with="status">
+   <p> This is a public copy of the editors’ draft.
+	It is provided for discussion only and may change at any moment.
+	Its publication here does not imply endorsement of its contents by W3C.
+	Don’t cite this document other than as work in progress. </p>
+   <p> <strong>Changes to this document may be tracked at <a href="https://github.com/w3c/webappsec">https://github.com/w3c/webappsec</a>.</strong> </p>
+   <p> The (<a href="https://lists.w3.org/Archives/Public/public-webappsec/">archived</a>) public mailing list <a href="mailto:public-webappsec@w3.org?Subject=%5Bpasskey-endpoints%5D%20PUT%20SUBJECT%20HERE">public-webappsec@w3.org</a> (see <a href="https://www.w3.org/Mail/Request">instructions</a>)
+	is preferred for discussion of this specification.
+	When sending e-mail,
+	please put the text “passkey-endpoints” in the subject,
+	preferably like this:
+	“[passkey-endpoints] <em>…summary of comment…</em>” </p>
+   <p> This document was produced by the <a href="https://www.w3.org/groups/wg/webappsec">Web Application Security Working Group</a>. </p>
+   <p> This document was produced by a group operating under
+	the <a href="https://www.w3.org/Consortium/Patent-Policy/">W3C Patent Policy</a>.
+	W3C maintains a <a href="https://www.w3.org/groups/wg/webappsec/ipr" rel="disclosure">public list of any patent disclosures</a> made in connection with the deliverables of the group;
+	that page also includes instructions for disclosing a patent.
+	An individual who has actual knowledge of a patent which the individual believes contains <a href="https://www.w3.org/Consortium/Patent-Policy/#def-essential">Essential Claim(s)</a> must disclose the information in accordance with <a href="https://www.w3.org/Consortium/Patent-Policy/#sec-Disclosure">section 6 of the W3C Patent Policy</a>. </p>
+   <p> This document is governed by the <a href="https://www.w3.org/2023/Process-20231103/" id="w3c_process_revision">03 November 2023 W3C Process Document</a>. </p>
+   <p></p>
+  </div>
+  <div data-fill-with="at-risk"></div>
+  <nav data-fill-with="table-of-contents" id="toc">
+   <h2 class="no-num no-toc no-ref" id="contents">Table of Contents</h2>
+   <ol class="toc" role="directory">
+    <li><a href="#intro"><span class="secno">1</span> <span class="content">Introduction</span></a>
+    <li><a href="#infra"><span class="secno">2</span> <span class="content">Infrastructure</span></a>
+    <li>
+     <a href="#semantics"><span class="secno">3</span> <span class="content">Passkey Endpoints URLs</span></a>
+     <ol class="toc">
+      <li><a href="#response"><span class="secno">3.1</span> <span class="content">Server Response</span></a>
+      <li><a href="#clients"><span class="secno">3.2</span> <span class="content">Client Processing</span></a>
+     </ol>
+    <li>
+     <a href="#iana"><span class="secno">4</span> <span class="content">IANA considerations</span></a>
+     <ol class="toc">
+      <li><a href="#the-change-password-well-known-uri"><span class="secno">4.1</span> <span class="content">The <code>passkey-endpoints</code> well-known URI</span></a>
+     </ol>
+    <li><a href="#acknowedgements"><span class="secno"></span> <span class="content">Acknowledgements</span></a>
+    <li>
+     <a href="#w3c-conformance"><span class="secno"></span> <span class="content">Conformance</span></a>
+     <ol class="toc">
+      <li><a href="#w3c-conventions"><span class="secno"></span> <span class="content">Document conventions</span></a>
+      <li><a href="#w3c-conformant-algorithms"><span class="secno"></span> <span class="content">Conformant Algorithms</span></a>
+     </ol>
+    <li>
+     <a href="#index"><span class="secno"></span> <span class="content">Index</span></a>
+     <ol class="toc">
+      <li><a href="#index-defined-elsewhere"><span class="secno"></span> <span class="content">Terms defined by reference</span></a>
+     </ol>
+    <li>
+     <a href="#references"><span class="secno"></span> <span class="content">References</span></a>
+     <ol class="toc">
+      <li><a href="#normative"><span class="secno"></span> <span class="content">Normative References</span></a>
+     </ol>
+   </ol>
+  </nav>
+  <main>
+   <div class="non-normative">
+    <h2 class="heading settled" data-level="1" id="intro"><span class="secno">1. </span><span class="content">Introduction</span><a class="self-link" href="#intro"></a></h2>
+    <p><em>This section is non-normative.</em></p>
+    <p><a data-link-type="dfn" href="https://www.w3.org/TR/webauthn-2#webauthn-relying-party" id="ref-for-webauthn-relying-party">WebAuthn Relying Parties</a> (RPs) currently lack a way to programmatically advertise that they support <a data-link-type="dfn" href="https://www.w3.org/TR/webauthn-3#passkey" id="ref-for-passkey">passkeys</a>, where a user <span class="allow-2119">can</span> create a passkey, and where they can manage existing passkeys. By proposing a well-known URL which defines a set of passkey-specific endpoints, this specification enables WebAuthn clients and authenticators to link directly to workflow-specific endpoints instead of the user needing to dig through their account settings.</p>
+   </div>
+   <h2 class="heading settled" data-level="2" id="infra"><span class="secno">2. </span><span class="content">Infrastructure</span><a class="self-link" href="#infra"></a></h2>
+   <p>This specification depends on the Infra Standard. <a data-link-type="biblio" href="#biblio-infra" title="Infra Standard">[INFRA]</a></p>
+   <p>This specification uses terminology from the Fetch, HTML, HTTP, and URL standards. <a data-link-type="biblio" href="#biblio-fetch" title="Fetch Standard">[FETCH]</a> <a data-link-type="biblio" href="#biblio-html" title="HTML Standard">[HTML]</a> <a data-link-type="biblio" href="#biblio-http-semantics" title="HTTP Semantics">[HTTP-SEMANTICS]</a> <a data-link-type="biblio" href="#biblio-url" title="URL Standard">[URL]</a></p>
+   <h2 class="heading settled" data-level="3" id="semantics"><span class="secno">3. </span><span class="content">Passkey Endpoints URLs</span><a class="self-link" href="#semantics"></a></h2>
+   <p>To advertise support for <a data-link-type="dfn" href="https://www.w3.org/TR/webauthn-3#passkey" id="ref-for-passkey①">passkeys</a> and/or provide direct endpoints for passkey creation and management, <a data-link-type="dfn" href="https://www.w3.org/TR/webauthn-2#relying-party" id="ref-for-relying-party">Relying Parties</a> MUST host a JSON document at the path formed by concatenating the string <code>.well-known/passkey-endpoints</code> with the <code>https</code> <a data-link-type="dfn" href="https://url.spec.whatwg.org/#concept-url-scheme" id="ref-for-concept-url-scheme">scheme</a> and <a data-link-type="dfn" href="https://www.w3.org/TR/webauthn-2#relying-party-identifier" id="ref-for-relying-party-identifier">relying party identifier</a> as per <a data-link-type="biblio" href="#biblio-well-known" title="Well-Known Uniform Resource Identifiers (URIs)">[WELL-KNOWN]</a>. A redirect MUST not be returned.</p>
+   <p class="example" id="example-0ea3bd03"><a class="self-link" href="#example-0ea3bd03"></a>The passkey endpoints URL for <a data-link-type="dfn" href="https://www.w3.org/TR/webauthn-2#rp-id" id="ref-for-rp-id">RP ID</a> <code>"example.com"</code> is <code>"https://example.com/.well-known/passkey-endpoints"</code>. </p>
+   <h3 class="heading settled" data-level="3.1" id="response"><span class="secno">3.1. </span><span class="content">Server Response</span><a class="self-link" href="#response"></a></h3>
+   <p>The server in this context is a <a data-link-type="dfn" href="https://www.w3.org/TR/webauthn-2#webauthn-relying-party" id="ref-for-webauthn-relying-party①">WebAuthn Relying Party</a> supporting <a data-link-type="dfn" href="https://www.w3.org/TR/webauthn-3#passkey" id="ref-for-passkey②">passkeys</a>.</p>
+   <p>A successful response MUST use the 200 OK HTTP status code and return a JSON object using the <code>application/json</code> content type.</p>
+   <p>The returned JSON object can contain any of the members defined below.</p>
+   <dl>
+    <dt data-md>enroll
+    <dd data-md>
+     <p>This OPTIONAL member contains a direct URL to the passkey creation page for a user account</p>
+    <dt data-md>manage
+    <dd data-md>
+     <p>This OPTIONAL member contains a direct URL to the passkey management page for a user account</p>
+   </dl>
+   <div class="example" id="example-b26ba3ba">
+    <a class="self-link" href="#example-b26ba3ba"></a> 
+<pre class="language-http highlight"><c- kr>HTTP</c-><c- o>/</c-><c- m>1.1</c-> <c- m>200</c-> <c- ne>OK</c->
+<c- e>Content-Type</c-><c- o>:</c-> <c- l>application/json</c->
+
+<c- p>{</c->
+   <c- f>"enroll"</c-><c- p>:</c-> <c- u>"https://example.com/account/manage/passkeys/create"</c-><c- p>,</c->
+   <c- f>"manage"</c-><c- p>:</c-> <c- u>"https://example.com/account/manage/passkeys"</c->
+<c- p>}</c->
+</pre>
+   </div>
+   <p>An empty JSON object CAN be returned to signal support for passkeys, but not advertise specific endpoints.</p>
+   <div class="example" id="example-90368790">
+    <a class="self-link" href="#example-90368790"></a> 
+<pre class="language-http highlight"><c- kr>HTTP</c-><c- o>/</c-><c- m>1.1</c-> <c- m>200</c-> <c- ne>OK</c->
+<c- e>Content-Type</c-><c- o>:</c-> <c- l>application/json</c->
+
+<c- p>{}</c->
+</pre>
+   </div>
+   <h3 class="heading settled" data-level="3.2" id="clients"><span class="secno">3.2. </span><span class="content">Client Processing</span><a class="self-link" href="#clients"></a></h3>
+   <p>A client in this context can be either a WebAuthn <a data-link-type="dfn" href="https://www.w3.org/TR/webauthn-2#webauthn-client" id="ref-for-webauthn-client">client</a> or an <a data-link-type="dfn" href="https://www.w3.org/TR/webauthn-2#authenticator" id="ref-for-authenticator">authenticator</a>.</p>
+   <p>Given a passkey’s <a data-link-type="dfn" href="https://www.w3.org/TR/webauthn-2#relying-party-identifier" id="ref-for-relying-party-identifier①">relying party identifier</a>, generate a passkey endpoints URL by running these steps:</p>
+   <ol>
+    <li data-md>
+     <p>Let <var>url</var> be a new <code class="idl"><a data-link-type="idl" href="https://url.spec.whatwg.org/#url" id="ref-for-url">URL</a></code> with values set as follows:</p>
+     <dl>
+      <dt data-md><a data-link-type="dfn" href="https://url.spec.whatwg.org/#concept-url-scheme" id="ref-for-concept-url-scheme①">scheme</a>
+      <dd data-md>
+       <p>"https"</p>
+      <dt data-md><a data-link-type="dfn" href="https://url.spec.whatwg.org/#concept-url-host" id="ref-for-concept-url-host">host</a>
+      <dd data-md>
+       <p>the passkey’s <a data-link-type="dfn" href="https://www.w3.org/TR/webauthn-2#relying-party-identifier" id="ref-for-relying-party-identifier②">relying party identifier</a></p>
+      <dt data-md><a data-link-type="dfn" href="https://url.spec.whatwg.org/#concept-url-port" id="ref-for-concept-url-port">port</a>
+      <dd data-md>
+       <p>null</p>
+      <dt data-md><a data-link-type="dfn" href="https://url.spec.whatwg.org/#concept-url-path" id="ref-for-concept-url-path">path</a>
+      <dd data-md>
+       <p>« ".well-known", "passkey-endpoints" ».</p>
+     </dl>
+    <li data-md>
+     <p>Return <var>url</var>.</p>
+   </ol>
+   <p class="example" id="example-0ea3bd03①"><a class="self-link" href="#example-0ea3bd03①"></a>The passkey endpoints URL for <a data-link-type="dfn" href="https://www.w3.org/TR/webauthn-2#rp-id" id="ref-for-rp-id①">RP ID</a> <code>"example.com"</code> is <code>"https://example.com/.well-known/passkey-endpoints"</code>. </p>
+   <h2 class="heading settled" data-level="4" id="iana"><span class="secno">4. </span><span class="content">IANA considerations</span><a class="self-link" href="#iana"></a></h2>
+   <h3 class="heading settled" data-level="4.1" id="the-change-password-well-known-uri"><span class="secno">4.1. </span><span class="content">The <code>passkey-endpoints</code> well-known URI</span><a class="self-link" href="#the-change-password-well-known-uri"></a></h3>
+   <p>This document defines the "<code>.well-known</code>" URI <code>passkey-endpoints</code>.
+This registration will be submitted to the IESG for review, approval, and registration with IANA using the template defined in <a data-link-type="biblio" href="#biblio-well-known" title="Well-Known Uniform Resource Identifiers (URIs)">[WELL-KNOWN]</a> as follows:</p>
+   <dl>
+    <dt data-md>URI suffix
+    <dd data-md>
+     <p>passkey-endpoints</p>
+    <dt data-md>Change controller
+    <dd data-md>
+     <p>W3C</p>
+    <dt data-md>Specification document(s)
+    <dd data-md>
+     <p>This document is the relevant specification. (See <a href="#response">§ 3.1 Server Response</a>)</p>
+    <dt data-md>Related information:
+    <dd data-md>
+     <p>None.</p>
+   </dl>
+   <h2 class="no-num heading settled" id="acknowedgements"><span class="content">Acknowledgements</span><a class="self-link" href="#acknowedgements"></a></h2>
+   <p>Thanks to</p>
+   <p>for their feedback on this proposal.</p>
+  </main>
+  <div data-fill-with="conformance">
+   <h2 class="no-ref no-num heading settled" id="w3c-conformance"><span class="content">Conformance</span><a class="self-link" href="#w3c-conformance"></a></h2>
+   <h3 class="no-ref no-num heading settled" id="w3c-conventions"><span class="content">Document conventions</span><a class="self-link" href="#w3c-conventions"></a></h3>
+   <p>Conformance requirements are expressed
+    with a combination of descriptive assertions
+    and RFC 2119 terminology.
+    The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”, “SHOULD”, “SHOULD NOT”, “RECOMMENDED”, “MAY”, and “OPTIONAL”
+    in the normative parts of this document
+    are to be interpreted as described in RFC 2119.
+    However, for readability,
+    these words do not appear in all uppercase letters in this specification. </p>
+   <p>All of the text of this specification is normative
+    except sections explicitly marked as non-normative, examples, and notes. <a data-link-type="biblio" href="#biblio-rfc2119" title="Key words for use in RFCs to Indicate Requirement Levels">[RFC2119]</a> </p>
+   <p>Examples in this specification are introduced with the words “for example”
+    or are set apart from the normative text
+    with <code>class="example"</code>,
+    like this: </p>
+   <div class="example" id="w3c-example">
+    <a class="self-link" href="#w3c-example"></a> 
+    <p>This is an example of an informative example. </p>
+   </div>
+   <p>Informative notes begin with the word “Note”
+    and are set apart from the normative text
+    with <code>class="note"</code>,
+    like this: </p>
+   <p class="note" role="note">Note, this is an informative note.</p>
+   <section>
+    <h3 class="no-ref no-num heading settled" id="w3c-conformant-algorithms"><span class="content">Conformant Algorithms</span><a class="self-link" href="#w3c-conformant-algorithms"></a></h3>
+    <p>Requirements phrased in the imperative as part of algorithms
+    (such as "strip any leading space characters"
+    or "return false and abort these steps")
+    are to be interpreted with the meaning of the key word
+    ("must", "should", "may", etc)
+    used in introducing the algorithm. </p>
+    <p>Conformance requirements phrased as algorithms or specific steps
+    can be implemented in any manner,
+    so long as the end result is equivalent.
+    In particular, the algorithms defined in this specification
+    are intended to be easy to understand
+    and are not intended to be performant.
+    Implementers are encouraged to optimize. </p>
+   </section>
+  </div>
+<script src="https://www.w3.org/scripts/TR/2021/fixup.js"></script>
+  <h2 class="no-num no-ref heading settled" id="index"><span class="content">Index</span><a class="self-link" href="#index"></a></h2>
+  <h3 class="no-num no-ref heading settled" id="index-defined-elsewhere"><span class="content">Terms defined by reference</span><a class="self-link" href="#index-defined-elsewhere"></a></h3>
+  <ul class="index">
+   <li>
+    <a data-link-type="biblio">[URL]</a> defines the following terms:
+    <ul>
+     <li><span class="dfn-paneled" id="f06432d7">URL</span>
+     <li><span class="dfn-paneled" id="b85ee3be">host</span>
+     <li><span class="dfn-paneled" id="c0868016">path</span>
+     <li><span class="dfn-paneled" id="852ada56">port</span>
+     <li><span class="dfn-paneled" id="3a711be7">scheme</span>
+    </ul>
+   <li>
+    <a data-link-type="biblio">[WEBAUTHN-2]</a> defines the following terms:
+    <ul>
+     <li><span class="dfn-paneled" id="93cc1818">authenticator</span>
+     <li><span class="dfn-paneled" id="eef1a81b">relying party</span>
+     <li><span class="dfn-paneled" id="d44100fa">relying party identifier</span>
+     <li><span class="dfn-paneled" id="4eaa5afc">rp id</span>
+     <li><span class="dfn-paneled" id="3137ed21">webauthn client</span>
+     <li><span class="dfn-paneled" id="785531b4">webauthn relying party</span>
+    </ul>
+   <li>
+    <a data-link-type="biblio">[WEBAUTHN-3]</a> defines the following terms:
+    <ul>
+     <li><span class="dfn-paneled" id="8351dded">passkey</span>
+    </ul>
+  </ul>
+  <h2 class="no-num no-ref heading settled" id="references"><span class="content">References</span><a class="self-link" href="#references"></a></h2>
+  <h3 class="no-num no-ref heading settled" id="normative"><span class="content">Normative References</span><a class="self-link" href="#normative"></a></h3>
+  <dl>
+   <dt id="biblio-fetch">[FETCH]
+   <dd>Anne van Kesteren. <a href="https://fetch.spec.whatwg.org/"><cite>Fetch Standard</cite></a>. Living Standard. URL: <a href="https://fetch.spec.whatwg.org/">https://fetch.spec.whatwg.org/</a>
+   <dt id="biblio-html">[HTML]
+   <dd>Anne van Kesteren; et al. <a href="https://html.spec.whatwg.org/multipage/"><cite>HTML Standard</cite></a>. Living Standard. URL: <a href="https://html.spec.whatwg.org/multipage/">https://html.spec.whatwg.org/multipage/</a>
+   <dt id="biblio-http-semantics">[HTTP-SEMANTICS]
+   <dd>R. Fielding, Ed.; M. Nottingham, Ed.; J. Reschke, Ed.. <a href="https://httpwg.org/specs/rfc9110.html"><cite>HTTP Semantics</cite></a>. June 2022. Internet Standard. URL: <a href="https://httpwg.org/specs/rfc9110.html">https://httpwg.org/specs/rfc9110.html</a>
+   <dt id="biblio-infra">[INFRA]
+   <dd>Anne van Kesteren; Domenic Denicola. <a href="https://infra.spec.whatwg.org/"><cite>Infra Standard</cite></a>. Living Standard. URL: <a href="https://infra.spec.whatwg.org/">https://infra.spec.whatwg.org/</a>
+   <dt id="biblio-rfc2119">[RFC2119]
+   <dd>S. Bradner. <a href="https://datatracker.ietf.org/doc/html/rfc2119"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. March 1997. Best Current Practice. URL: <a href="https://datatracker.ietf.org/doc/html/rfc2119">https://datatracker.ietf.org/doc/html/rfc2119</a>
+   <dt id="biblio-url">[URL]
+   <dd>Anne van Kesteren. <a href="https://url.spec.whatwg.org/"><cite>URL Standard</cite></a>. Living Standard. URL: <a href="https://url.spec.whatwg.org/">https://url.spec.whatwg.org/</a>
+   <dt id="biblio-webauthn-2">[WEBAUTHN-2]
+   <dd>Jeff Hodges; et al. <a href="https://w3c.github.io/webauthn/"><cite>Web Authentication: An API for accessing Public Key Credentials - Level 2</cite></a>. URL: <a href="https://w3c.github.io/webauthn/">https://w3c.github.io/webauthn/</a>
+   <dt id="biblio-webauthn-3">[WEBAUTHN-3]
+   <dd>Michael Jones; Akshay Kumar; Emil Lundberg. <a href="https://w3c.github.io/webauthn/"><cite>Web Authentication: An API for accessing Public Key Credentials - Level 3</cite></a>. URL: <a href="https://w3c.github.io/webauthn/">https://w3c.github.io/webauthn/</a>
+   <dt id="biblio-well-known">[WELL-KNOWN]
+   <dd>M. Nottingham. <a href="https://www.rfc-editor.org/rfc/rfc8615"><cite>Well-Known Uniform Resource Identifiers (URIs)</cite></a>. May 2019. Proposed Standard. URL: <a href="https://www.rfc-editor.org/rfc/rfc8615">https://www.rfc-editor.org/rfc/rfc8615</a>
+  </dl>
+<script>/* Boilerplate: script-dfn-panel */
+"use strict";
+{
+    const dfnsJson = window.dfnsJson || {};
+
+    function genDfnPanel({dfnID, url, dfnText, refSections, external}) {
+        return mk.aside({
+            class: "dfn-panel",
+            id: `infopanel-for-${dfnID}`,
+            "data-for": dfnID,
+            "aria-labelled-by":`infopaneltitle-for-${dfnID}`,
+            },
+            mk.span({id:`infopaneltitle-for-${dfnID}`, style:"display:none"},
+                `Info about the '${dfnText}' ${external?"external":""} reference.`),
+            mk.a({href:url}, url),
+            mk.b({}, "Referenced in:"),
+            mk.ul({},
+                ...refSections.map(section=>
+                    mk.li({},
+                        ...section.refs.map((ref, refI)=>
+                            [
+                                mk.a({
+                                    href: `#${ref.id}`
+                                    },
+                                    (refI == 0) ? section.title : `(${refI + 1})`
+                                ),
+                                " ",
+                            ]
+                        ),
+                    ),
+                ),
+            ),
+        );
+    }
+
+    function genAllDfnPanels() {
+        for(const panelData of Object.values(window.dfnpanelData)) {
+            const dfnID = panelData.dfnID;
+            const dfn = document.getElementById(dfnID);
+            if(!dfn) {
+                console.log(`Can't find dfn#${dfnID}.`, panelData);
+            } else {
+                const panel = genDfnPanel(panelData);
+                append(document.body, panel);
+                insertDfnPopupAction(dfn, panel)
+            }
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", ()=>{
+        genAllDfnPanels();
+
+        // Add popup behavior to all dfns to show the corresponding dfn-panel.
+        var dfns = queryAll('.dfn-paneled');
+        for(let dfn of dfns) { ; }
+
+        document.body.addEventListener("click", (e) => {
+            // If not handled already, just hide all dfn panels.
+            hideAllDfnPanels();
+        });
+    })
+
+
+    function hideAllDfnPanels() {
+        // Turn off any currently "on" or "activated" panels.
+        queryAll(".dfn-panel.on, .dfn-panel.activated").forEach(el=>hideDfnPanel(el));
+    }
+
+    function showDfnPanel(dfnPanel, dfn) {
+        hideAllDfnPanels(); // Only display one at this time.
+        dfn.setAttribute("aria-expanded", "true");
+        dfnPanel.classList.add("on");
+        dfnPanel.style.left = "5px";
+        dfnPanel.style.top = "0px";
+        const panelRect = dfnPanel.getBoundingClientRect();
+        const panelWidth = panelRect.right - panelRect.left;
+        if (panelRect.right > document.body.scrollWidth) {
+            // Panel's overflowing the screen.
+            // Just drop it below the dfn and flip it rightward instead.
+            // This still wont' fix things if the screen is *really* wide,
+            // but fixing that's a lot harder without 'anchor()'.
+            dfnPanel.style.top = "1.5em";
+            dfnPanel.style.left = "auto";
+            dfnPanel.style.right = "0px";
+        }
+    }
+
+    function pinDfnPanel(dfnPanel) {
+        // Switch it to "activated" state, which pins it.
+        dfnPanel.classList.add("activated");
+        dfnPanel.style.left = null;
+        dfnPanel.style.top = null;
+    }
+
+    function hideDfnPanel(dfnPanel, dfn) {
+        if(!dfn) {
+            dfn = document.getElementById(dfnPanel.getAttribute("data-for"));
+        }
+        dfn.setAttribute("aria-expanded", "false")
+        dfnPanel.classList.remove("on");
+        dfnPanel.classList.remove("activated");
+    }
+
+    function toggleDfnPanel(dfnPanel, dfn) {
+        if(dfnPanel.classList.contains("on")) {
+            hideDfnPanel(dfnPanel, dfn);
+        } else {
+            showDfnPanel(dfnPanel, dfn);
+        }
+    }
+
+    function insertDfnPopupAction(dfn, dfnPanel) {
+        // Find dfn panel
+        const panelWrapper = document.createElement('span');
+        panelWrapper.appendChild(dfnPanel);
+        panelWrapper.style.position = "relative";
+        panelWrapper.style.height = "0px";
+        dfn.insertAdjacentElement("afterend", panelWrapper);
+        dfn.setAttribute('role', 'button');
+        dfn.setAttribute('aria-expanded', 'false')
+        dfn.tabIndex = 0;
+        dfn.classList.add('has-dfn-panel');
+        dfn.addEventListener('click', (event) => {
+            showDfnPanel(dfnPanel, dfn);
+            event.stopPropagation();
+        });
+        dfn.addEventListener('keypress', (event) => {
+            const kc = event.keyCode;
+            // 32->Space, 13->Enter
+            if(kc == 32 || kc == 13) {
+                toggleDfnPanel(dfnPanel, dfn);
+                event.stopPropagation();
+                event.preventDefault();
+            }
+        });
+
+        dfnPanel.addEventListener('click', (event) => {
+            if (event.target.nodeName == 'A') {
+                pinDfnPanel(dfnPanel);
+            }
+            event.stopPropagation();
+        });
+
+        dfnPanel.addEventListener('keydown', (event) => {
+            if(event.keyCode == 27) { // Escape key
+                hideDfnPanel(dfnPanel, dfn);
+                event.stopPropagation();
+                event.preventDefault();
+            }
+        })
+    }
+}
+</script>
+<script>/* Boilerplate: script-dfn-panel-json */
+window.dfnpanelData = {};
+window.dfnpanelData['f06432d7'] = {"dfnID": "f06432d7", "url": "https://url.spec.whatwg.org/#url", "dfnText": "URL", "refSections": [{"refs": [{"id": "ref-for-url"}], "title": "3.2. Client Processing"}], "external": true};
+window.dfnpanelData['b85ee3be'] = {"dfnID": "b85ee3be", "url": "https://url.spec.whatwg.org/#concept-url-host", "dfnText": "host", "refSections": [{"refs": [{"id": "ref-for-concept-url-host"}], "title": "3.2. Client Processing"}], "external": true};
+window.dfnpanelData['c0868016'] = {"dfnID": "c0868016", "url": "https://url.spec.whatwg.org/#concept-url-path", "dfnText": "path", "refSections": [{"refs": [{"id": "ref-for-concept-url-path"}], "title": "3.2. Client Processing"}], "external": true};
+window.dfnpanelData['852ada56'] = {"dfnID": "852ada56", "url": "https://url.spec.whatwg.org/#concept-url-port", "dfnText": "port", "refSections": [{"refs": [{"id": "ref-for-concept-url-port"}], "title": "3.2. Client Processing"}], "external": true};
+window.dfnpanelData['3a711be7'] = {"dfnID": "3a711be7", "url": "https://url.spec.whatwg.org/#concept-url-scheme", "dfnText": "scheme", "refSections": [{"refs": [{"id": "ref-for-concept-url-scheme"}], "title": "3. Passkey Endpoints URLs"}, {"refs": [{"id": "ref-for-concept-url-scheme\u2460"}], "title": "3.2. Client Processing"}], "external": true};
+window.dfnpanelData['93cc1818'] = {"dfnID": "93cc1818", "url": "https://www.w3.org/TR/webauthn-2#authenticator", "dfnText": "authenticator", "refSections": [{"refs": [{"id": "ref-for-authenticator"}], "title": "3.2. Client Processing"}], "external": true};
+window.dfnpanelData['eef1a81b'] = {"dfnID": "eef1a81b", "url": "https://www.w3.org/TR/webauthn-2#relying-party", "dfnText": "relying party", "refSections": [{"refs": [{"id": "ref-for-relying-party"}], "title": "3. Passkey Endpoints URLs"}], "external": true};
+window.dfnpanelData['d44100fa'] = {"dfnID": "d44100fa", "url": "https://www.w3.org/TR/webauthn-2#relying-party-identifier", "dfnText": "relying party identifier", "refSections": [{"refs": [{"id": "ref-for-relying-party-identifier"}], "title": "3. Passkey Endpoints URLs"}, {"refs": [{"id": "ref-for-relying-party-identifier\u2460"}, {"id": "ref-for-relying-party-identifier\u2461"}], "title": "3.2. Client Processing"}], "external": true};
+window.dfnpanelData['4eaa5afc'] = {"dfnID": "4eaa5afc", "url": "https://www.w3.org/TR/webauthn-2#rp-id", "dfnText": "rp id", "refSections": [{"refs": [{"id": "ref-for-rp-id"}], "title": "3. Passkey Endpoints URLs"}, {"refs": [{"id": "ref-for-rp-id\u2460"}], "title": "3.2. Client Processing"}], "external": true};
+window.dfnpanelData['3137ed21'] = {"dfnID": "3137ed21", "url": "https://www.w3.org/TR/webauthn-2#webauthn-client", "dfnText": "webauthn client", "refSections": [{"refs": [{"id": "ref-for-webauthn-client"}], "title": "3.2. Client Processing"}], "external": true};
+window.dfnpanelData['785531b4'] = {"dfnID": "785531b4", "url": "https://www.w3.org/TR/webauthn-2#webauthn-relying-party", "dfnText": "webauthn relying party", "refSections": [{"refs": [{"id": "ref-for-webauthn-relying-party"}], "title": "1. Introduction"}, {"refs": [{"id": "ref-for-webauthn-relying-party\u2460"}], "title": "3.1. Server Response"}], "external": true};
+window.dfnpanelData['8351dded'] = {"dfnID": "8351dded", "url": "https://www.w3.org/TR/webauthn-3#passkey", "dfnText": "passkey", "refSections": [{"refs": [{"id": "ref-for-passkey"}], "title": "1. Introduction"}, {"refs": [{"id": "ref-for-passkey\u2460"}], "title": "3. Passkey Endpoints URLs"}, {"refs": [{"id": "ref-for-passkey\u2461"}], "title": "3.1. Server Response"}], "external": true};
+</script>
+<script>/* Boilerplate: script-dom-helper */
+function query(sel) { return document.querySelector(sel); }
+
+function queryAll(sel) { return [...document.querySelectorAll(sel)]; }
+
+function iter(obj) {
+	if(!obj) return [];
+	var it = obj[Symbol.iterator];
+	if(it) return it;
+	return Object.entries(obj);
+}
+
+function mk(tagname, attrs, ...children) {
+	const el = document.createElement(tagname);
+	for(const [k,v] of iter(attrs)) {
+		if(k.slice(0,3) == "_on") {
+			const eventName = k.slice(3);
+			el.addEventListener(eventName, v);
+		} else if(k[0] == "_") {
+			// property, not attribute
+			el[k.slice(1)] = v;
+		} else {
+			if(v === false || v == null) {
+        continue;
+      } else if(v === true) {
+        el.setAttribute(k, "");
+        continue;
+      } else {
+  			el.setAttribute(k, v);
+      }
+		}
+	}
+	append(el, children);
+	return el;
+}
+
+/* Create shortcuts for every known HTML element */
+[
+  "a",
+  "abbr",
+  "acronym",
+  "address",
+  "applet",
+  "area",
+  "article",
+  "aside",
+  "audio",
+  "b",
+  "base",
+  "basefont",
+  "bdo",
+  "big",
+  "blockquote",
+  "body",
+  "br",
+  "button",
+  "canvas",
+  "caption",
+  "center",
+  "cite",
+  "code",
+  "col",
+  "colgroup",
+  "datalist",
+  "dd",
+  "del",
+  "details",
+  "dfn",
+  "dialog",
+  "div",
+  "dl",
+  "dt",
+  "em",
+  "embed",
+  "fieldset",
+  "figcaption",
+  "figure",
+  "font",
+  "footer",
+  "form",
+  "frame",
+  "frameset",
+  "head",
+  "header",
+  "h1",
+  "h2",
+  "h3",
+  "h4",
+  "h5",
+  "h6",
+  "hr",
+  "html",
+  "i",
+  "iframe",
+  "img",
+  "input",
+  "ins",
+  "kbd",
+  "label",
+  "legend",
+  "li",
+  "link",
+  "main",
+  "map",
+  "mark",
+  "meta",
+  "meter",
+  "nav",
+  "nobr",
+  "noscript",
+  "object",
+  "ol",
+  "optgroup",
+  "option",
+  "output",
+  "p",
+  "param",
+  "pre",
+  "progress",
+  "q",
+  "s",
+  "samp",
+  "script",
+  "section",
+  "select",
+  "small",
+  "source",
+  "span",
+  "strike",
+  "strong",
+  "style",
+  "sub",
+  "summary",
+  "sup",
+  "table",
+  "tbody",
+  "td",
+  "template",
+  "textarea",
+  "tfoot",
+  "th",
+  "thead",
+  "time",
+  "title",
+  "tr",
+  "u",
+  "ul",
+  "var",
+  "video",
+  "wbr",
+  "xmp",
+].forEach(tagname=>{
+	mk[tagname] = (...args) => mk(tagname, ...args);
+});
+
+function* nodesFromChildList(children) {
+	for(const child of children.flat(Infinity)) {
+		if(child instanceof Node) {
+			yield child;
+		} else {
+			yield new Text(child);
+		}
+	}
+}
+function append(el, ...children) {
+	for(const child of nodesFromChildList(children)) {
+		if(el instanceof Node) el.appendChild(child);
+		else el.push(child);
+	}
+	return el;
+}
+
+function insertAfter(el, ...children) {
+	for(const child of nodesFromChildList(children)) {
+		el.parentNode.insertBefore(child, el.nextSibling);
+	}
+	return el;
+}
+
+function clearContents(el) {
+	el.innerHTML = "";
+	return el;
+}
+
+function parseHTML(markup) {
+	if(markup.toLowerCase().trim().indexOf('<!doctype') === 0) {
+		const doc = document.implementation.createHTMLDocument("");
+		doc.documentElement.innerHTML = markup;
+		return doc;
+	} else {
+		const el = mk.template({});
+		el.innerHTML = markup;
+		return el.content;
+	}
+}
+</script>
