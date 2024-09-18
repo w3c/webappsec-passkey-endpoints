@@ -1,5 +1,5 @@
 <pre class='metadata'>
-Title: A Well-Known URL for Passkey Endpoints
+Title: A Well-Known URL for Relying Party Passkey Endpoints
 Shortname: passkey-endpoints
 Level: None
 Status: ED
