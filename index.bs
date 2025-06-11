@@ -157,6 +157,4 @@ This registration will be submitted to the IESG for review, approval, and regist
 
 <h2 id="acknowedgements" class="no-num">Acknowledgements</h2>
 
-Thanks to
-
-for their feedback on this proposal.
+Thanks to Rew Islam, Adam Langley, René Léveillé, Matthew Miller, Ricky Mondello, and Dan Veditz for their feedback on this proposal.
