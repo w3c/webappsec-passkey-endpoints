@@ -5,14 +5,16 @@ Level: 1
 Status: ED
 Group: WebAppSec
 Repository: w3c/webappsec-passkey-endpoints
-URL: https://w3c.github.io/webappsec-passkey-endpoints/
+URL: https://www.w3.org/TR/passkey-endpoints/
 ED: https://w3c.github.io/webappsec-passkey-endpoints/
 Editor: Tim Cappalli, w3cid 111190, Okta https://www.okta.com/, tim.cappalli@okta.com
 Abstract: This specification defines a well-known URL which WebAuthn
- Relying Parties (RPs) can host to make their creation and management
- endpoints discoverable by WebAuthn clients and authenticators.
+ Relying Parties (RPs) can host to make their creation, management,
+ and other informational endpoints discoverable by WebAuthn Clients
+ and credential managers.
 Complain About: accidental-2119 true
 Markup Shorthands: idl yes, markdown yes
+Default Ref Status: snapshot
 </pre>
 
 
@@ -41,6 +43,7 @@ spec: webauthn-2; urlPrefix: https://www.w3.org/TR/webauthn-2
 spec: webauthn-3; urlPrefix: https://www.w3.org/TR/webauthn-3
     type: dfn
         text: passkey; url: passkey
+        text: pseudo-random function extension; url: prf-extension
 </pre>
 
 <pre class="link-defaults">
@@ -61,7 +64,8 @@ text:scheme;        type:dfn;         spec:url
 
 <em>This section is non-normative.</em>
 
-[=WebAuthn Relying Party|WebAuthn Relying Parties=] (RPs) currently lack a way to programmatically advertise that they support [=passkeys=], where a user <span class="allow-2119">can</span> create a passkey, and where they can manage existing passkeys. By proposing a well-known URL which defines a set of passkey-specific endpoints, this specification enables WebAuthn clients and authenticators to link directly to workflow-specific endpoints instead of the user needing to dig through their account settings.
+[=WebAuthn Relying Party|WebAuthn Relying Parties=] (RPs) currently lack a way to programmatically advertise that they support [=passkeys=], where a user <span class="allow-2119">can</span> create a passkey for the service and where they can manage existing passkeys for the service. Passkeys can also be used for additional functions beyond sign in, such as signing and encryption. 
+By proposing a well-known URL which defines a set of passkey-specific endpoints, this specification enables [=WebAuthn Clients=] and credential managers ([=authenticators=]) to link directly to workflow-specific and informational endpoints instead of the user needing to dig through their account settings and help pages.
 
 </div>
 
@@ -79,7 +83,7 @@ To advertise support for [=passkeys=] and/or provide direct endpoints for passke
 
 <h3 id="response">Server Response</h3>
 
-The server in this context is a [=WebAuthn Relying Party=] supporting [=passkeys=].
+The server in this context is a [=WebAuthn Relying Party=] (RP) supporting [=passkeys=].
 
 A successful response MUST use the 200 OK HTTP status code and return a JSON object using the `application/json` content type.
 
@@ -91,15 +95,20 @@ The returned JSON object can contain any of the members defined below.
 :   manage
 ::  This OPTIONAL member contains a direct URL to the passkey management page for a user account
 
+:   prfUsageDetails
+::  This OPTIONAL member contains a URL to an informational page describing how the RP uses the WebAuthn [=Pseudo-Random Function Extension=] (PRF).
+
 
 <div class=example>
+
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
    "enroll": "https://example.com/account/manage/passkeys/create",
-   "manage": "https://example.com/account/manage/passkeys"
+   "manage": "https://example.com/account/manage/passkeys",
+   "prfUsageDetails": "https://example.com/help/passkeys#encryption"
 }
 ```
 </div>
@@ -117,7 +126,7 @@ Content-Type: application/json
 
 <h3 id="clients">Client Processing</h3>
 
-A client in this context can be either a WebAuthn [=WebAuthn client|client=] or an [=authenticator=].
+A client in this context can be either a WebAuthn [=WebAuthn Client=] or a credential manager ([=authenticator=]).
 
 Given a passkey's [=relying party identifier=], generate a passkey endpoints URL by running these steps:
 
@@ -157,4 +166,4 @@ This registration will be submitted to the IESG for review, approval, and regist
 
 <h2 id="acknowedgements" class="no-num">Acknowledgements</h2>
 
-Thanks to Rew Islam, Adam Langley, René Léveillé, Matthew Miller, Ricky Mondello, and Dan Veditz for their feedback on this proposal.
+Thanks to Arnar Birgisson, Rew Islam, Adam Langley, René Léveillé, Matthew Miller, Ricky Mondello, and Dan Veditz for their feedback on this proposal.
