@@ -8,6 +8,7 @@ Repository: w3c/webappsec-passkey-endpoints
 URL: https://w3c.github.io/webappsec-passkey-endpoints/
 ED: https://w3c.github.io/webappsec-passkey-endpoints/
 Editor: Tim Cappalli, w3cid 111190, Okta https://www.okta.com/, tim.cappalli@okta.com
+Editor: Matthew Miller, w3cid 129314, Cisco, mattmil3@cisco.com
 Abstract: This specification defines a well-known URL which WebAuthn
  Relying Parties (RPs) can host to make their creation and management
  endpoints discoverable by WebAuthn clients and authenticators.
