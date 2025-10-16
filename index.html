@@ -7,7 +7,7 @@
   <link href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED" rel="stylesheet">
   <meta content="Bikeshed version 3f621ba99, updated Mon Jul 28 15:38:36 2025 -0700" name="generator">
   <link href="https://w3c.github.io/webappsec-passkey-endpoints/" rel="canonical">
-  <meta content="f33ccad3a4d916e7f66ef69a49f698301e37ce5d" name="revision">
+  <meta content="4604bd91ed9ceb6653bcbd3e09e3982ff9e67ff2" name="revision">
   <meta content="dark light" name="color-scheme">
   <link href="https://www.w3.org/StyleSheets/TR/2021/dark.css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css">
 <style>/* Boilerplate: style-autolinks */
@@ -694,7 +694,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
 </p>
    <h1 class="p-name no-ref" id="title">A Well-Known URL for Relying Party Passkey Endpoints</h1>
    <p id="w3c-state"><a href="https://www.w3.org/standards/types/#ED">Editor’s Draft</a>,
-    <time class="dt-updated" datetime="2025-10-15">15 October 2025</time></p>
+    <time class="dt-updated" datetime="2025-10-16">16 October 2025</time></p>
    <details open>
     <summary>More details about this document</summary>
     <div data-fill-with="spec-metadata">
@@ -719,8 +719,9 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="p-summary" data-fill-with="abstract">
    <h2 class="no-num no-toc no-ref heading settled" id="abstract"><span class="content">Abstract</span></h2>
    <p>This specification defines a well-known URL which WebAuthn
-Relying Parties (RPs) can host to make their creation and management
-endpoints discoverable by WebAuthn clients and authenticators.</p>
+Relying Parties (RPs) can host to make their creation, management,
+and other informational endpoints discoverable by WebAuthn Clients
+and credential managers.</p>
   </div>
   <h2 class="no-num no-toc no-ref heading settled" id="sotd"><span class="content">Status of this document</span></h2>
   <div data-fill-with="status">
@@ -808,7 +809,8 @@ endpoints discoverable by WebAuthn clients and authenticators.</p>
    <div class="non-normative">
     <h2 class="heading settled" data-level="1" id="intro"><span class="secno">1. </span><span class="content">Introduction</span><a class="self-link" href="#intro"></a></h2>
     <p><em>This section is non-normative.</em></p>
-    <p><a data-link-type="dfn" href="https://www.w3.org/TR/webauthn-2#webauthn-relying-party" id="ref-for-webauthn-relying-party">WebAuthn Relying Parties</a> (RPs) currently lack a way to programmatically advertise that they support <a data-link-type="dfn" href="https://www.w3.org/TR/webauthn-3#passkey" id="ref-for-passkey">passkeys</a>, where a user <span class="allow-2119">can</span> create a passkey, and where they can manage existing passkeys. By proposing a well-known URL which defines a set of passkey-specific endpoints, this specification enables WebAuthn clients and authenticators to link directly to workflow-specific endpoints instead of the user needing to dig through their account settings.</p>
+    <p><a data-link-type="dfn" href="https://www.w3.org/TR/webauthn-2#webauthn-relying-party" id="ref-for-webauthn-relying-party">WebAuthn Relying Parties</a> (RPs) currently lack a way to programmatically advertise that they support <a data-link-type="dfn" href="https://www.w3.org/TR/webauthn-3#passkey" id="ref-for-passkey">passkeys</a>, where a user <span class="allow-2119">can</span> create a passkey for the service and where they can manage existing passkeys for the service. Passkeys can also be used for additional functions beyond sign in, such as signing and encryption.
+By proposing a well-known URL which defines a set of passkey-specific endpoints, this specification enables <a data-link-type="dfn" href="https://www.w3.org/TR/webauthn-2#webauthn-client" id="ref-for-webauthn-client">WebAuthn Clients</a> and credential managers (<a data-link-type="dfn" href="https://www.w3.org/TR/webauthn-2#authenticator" id="ref-for-authenticator">authenticators</a>) to link directly to workflow-specific and informational endpoints instead of the user needing to dig through their account settings and help pages.</p>
    </div>
    <h2 class="heading settled" data-level="2" id="infra"><span class="secno">2. </span><span class="content">Infrastructure</span><a class="self-link" href="#infra"></a></h2>
    <p>This specification depends on the Infra Standard. <a data-link-type="biblio" href="#biblio-infra" title="Infra Standard">[INFRA]</a></p>
@@ -819,7 +821,7 @@ endpoints discoverable by WebAuthn clients and authenticators.</p>
 
 </p>
    <h3 class="heading settled" data-level="3.1" id="response"><span class="secno">3.1. </span><span class="content">Server Response</span><a class="self-link" href="#response"></a></h3>
-   <p>The server in this context is a <a data-link-type="dfn" href="https://www.w3.org/TR/webauthn-2#webauthn-relying-party" id="ref-for-webauthn-relying-party①">WebAuthn Relying Party</a> supporting <a data-link-type="dfn" href="https://www.w3.org/TR/webauthn-3#passkey" id="ref-for-passkey②">passkeys</a>.</p>
+   <p>The server in this context is a <a data-link-type="dfn" href="https://www.w3.org/TR/webauthn-2#webauthn-relying-party" id="ref-for-webauthn-relying-party①">WebAuthn Relying Party</a> (RP) supporting <a data-link-type="dfn" href="https://www.w3.org/TR/webauthn-3#passkey" id="ref-for-passkey②">passkeys</a>.</p>
    <p>A successful response MUST use the 200 OK HTTP status code and return a JSON object using the <code>application/json</code> content type.</p>
    <p>The returned JSON object can contain any of the members defined below.</p>
    <dl>
@@ -829,16 +831,21 @@ endpoints discoverable by WebAuthn clients and authenticators.</p>
     <dt data-md>manage
     <dd data-md>
      <p>This OPTIONAL member contains a direct URL to the passkey management page for a user account</p>
+    <dt data-md>prfUsageDetails
+    <dd data-md>
+     <p>This OPTIONAL member contains a URL to an informational page describing how the RP uses the WebAuthn <a data-link-type="dfn" href="https://www.w3.org/TR/webauthn-3#prf-extension" id="ref-for-prf-extension">Pseudo-Random Function Extension</a> (PRF).</p>
    </dl>
-   <div class="example" id="example-b26ba3ba">
-    <a class="self-link" href="#example-b26ba3ba"></a>
+   <div class="example" id="example-89040d1f">
+    <a class="self-link" href="#example-89040d1f"></a>
+
 
 <pre class="language-http highlight"><c- kr>HTTP</c-><c- o>/</c-><c- m>1.1</c-> <c- m>200</c-> <c- ne>OK</c->
 <c- e>Content-Type</c-><c- o>:</c-> <c- l>application/json</c->
 
 <c- p>{</c->
    <c- f>"enroll"</c-><c- p>:</c-> <c- u>"https://example.com/account/manage/passkeys/create"</c-><c- p>,</c->
-   <c- f>"manage"</c-><c- p>:</c-> <c- u>"https://example.com/account/manage/passkeys"</c->
+   <c- f>"manage"</c-><c- p>:</c-> <c- u>"https://example.com/account/manage/passkeys"</c-><c- p>,</c->
+   <c- f>"prfUsageDetails"</c-><c- p>:</c-> <c- u>"https://example.com/help/passkeys#encryption"</c->
 <c- p>}</c->
 </pre>
    </div>
@@ -853,7 +860,7 @@ endpoints discoverable by WebAuthn clients and authenticators.</p>
 </pre>
    </div>
    <h3 class="heading settled" data-level="3.2" id="clients"><span class="secno">3.2. </span><span class="content">Client Processing</span><a class="self-link" href="#clients"></a></h3>
-   <p>A client in this context can be either a WebAuthn <a data-link-type="dfn" href="https://www.w3.org/TR/webauthn-2#webauthn-client" id="ref-for-webauthn-client">client</a> or an <a data-link-type="dfn" href="https://www.w3.org/TR/webauthn-2#authenticator" id="ref-for-authenticator">authenticator</a>.</p>
+   <p>A client in this context can be either a WebAuthn <a data-link-type="dfn" href="https://www.w3.org/TR/webauthn-2#webauthn-client" id="ref-for-webauthn-client①">WebAuthn Client</a> or a credential manager (<a data-link-type="dfn" href="https://www.w3.org/TR/webauthn-2#authenticator" id="ref-for-authenticator①">authenticator</a>).</p>
    <p>Given a passkey’s <a data-link-type="dfn" href="https://www.w3.org/TR/webauthn-2#relying-party-identifier" id="ref-for-relying-party-identifier①">relying party identifier</a>, generate a passkey endpoints URL by running these steps:</p>
    <ol>
     <li data-md>
@@ -897,7 +904,7 @@ This registration will be submitted to the IESG for review, approval, and regist
      <p>None.</p>
    </dl>
    <h2 class="no-num heading settled" id="acknowedgements"><span class="content">Acknowledgements</span><a class="self-link" href="#acknowedgements"></a></h2>
-   <p>Thanks to Rew Islam, Adam Langley, René Léveillé, Matthew Miller, Ricky Mondello, and Dan Veditz for their feedback on this proposal.</p>
+   <p>Thanks to Arnar Birgisson, Rew Islam, Adam Langley, René Léveillé, Matthew Miller, Ricky Mondello, and Dan Veditz for their feedback on this proposal.</p>
   </main>
   <div data-fill-with="conformance">
    <h2 class="no-ref no-num heading settled" id="w3c-conformance"><span class="content">Conformance</span><a class="self-link" href="#w3c-conformance"></a></h2>
@@ -982,6 +989,7 @@ This registration will be submitted to the IESG for review, approval, and regist
     <a data-link-type="biblio">[WEBAUTHN-3]</a> defines the following terms:
     <ul>
      <li><span class="dfn-paneled" id="8351dded">passkey</span>
+     <li><span class="dfn-paneled" id="9094d03b">pseudo-random function extension</span>
     </ul>
   </ul>
   <h2 class="no-num no-ref heading settled" id="references"><span class="content">References</span><a class="self-link" href="#references"></a></h2>
@@ -1000,9 +1008,9 @@ This registration will be submitted to the IESG for review, approval, and regist
    <dt id="biblio-url">[URL]
    <dd>Anne van Kesteren. <a href="https://url.spec.whatwg.org/"><cite>URL Standard</cite></a>. Living Standard. URL: <a href="https://url.spec.whatwg.org/">https://url.spec.whatwg.org/</a>
    <dt id="biblio-webauthn-2">[WEBAUTHN-2]
-   <dd>Jeff Hodges; et al. <a href="https://w3c.github.io/webauthn/"><cite>Web Authentication: An API for accessing Public Key Credentials - Level 2</cite></a>. URL: <a href="https://w3c.github.io/webauthn/">https://w3c.github.io/webauthn/</a>
+   <dd>Jeff Hodges; et al. <a href="https://www.w3.org/TR/webauthn-2/"><cite>Web Authentication: An API for accessing Public Key Credentials - Level 2</cite></a>. 8 April 2021. REC. URL: <a href="https://www.w3.org/TR/webauthn-2/">https://www.w3.org/TR/webauthn-2/</a>
    <dt id="biblio-webauthn-3">[WEBAUTHN-3]
-   <dd>Tim Cappalli; et al. <a href="https://w3c.github.io/webauthn/"><cite>Web Authentication: An API for accessing Public Key Credentials - Level 3</cite></a>. URL: <a href="https://w3c.github.io/webauthn/">https://w3c.github.io/webauthn/</a>
+   <dd>Tim Cappalli; et al. <a href="https://www.w3.org/TR/webauthn-3/"><cite>Web Authentication: An API for accessing Public Key Credentials - Level 3</cite></a>. 27 January 2025. WD. URL: <a href="https://www.w3.org/TR/webauthn-3/">https://www.w3.org/TR/webauthn-3/</a>
    <dt id="biblio-well-known">[WELL-KNOWN]
    <dd>M. Nottingham. <a href="https://www.rfc-editor.org/rfc/rfc8615"><cite>Well-Known Uniform Resource Identifiers (URIs)</cite></a>. May 2019. Proposed Standard. URL: <a href="https://www.rfc-editor.org/rfc/rfc8615">https://www.rfc-editor.org/rfc/rfc8615</a>
   </dl>
@@ -1206,13 +1214,14 @@ function parseHTML(markup) {
 "use strict";
 {
 let dfnPanelData = {
-"3137ed21": {"dfnID":"3137ed21","dfnText":"webauthn client","external":true,"refSections":[{"refs":[{"id":"ref-for-webauthn-client"}],"title":"3.2. Client Processing"}],"url":"https://www.w3.org/TR/webauthn-2#webauthn-client"},
+"3137ed21": {"dfnID":"3137ed21","dfnText":"webauthn client","external":true,"refSections":[{"refs":[{"id":"ref-for-webauthn-client"}],"title":"1. Introduction"},{"refs":[{"id":"ref-for-webauthn-client\u2460"}],"title":"3.2. Client Processing"}],"url":"https://www.w3.org/TR/webauthn-2#webauthn-client"},
 "3a711be7": {"dfnID":"3a711be7","dfnText":"scheme","external":true,"refSections":[{"refs":[{"id":"ref-for-concept-url-scheme"}],"title":"3. Passkey Endpoints URLs"},{"refs":[{"id":"ref-for-concept-url-scheme\u2460"}],"title":"3.2. Client Processing"}],"url":"https://url.spec.whatwg.org/#concept-url-scheme"},
 "4eaa5afc": {"dfnID":"4eaa5afc","dfnText":"RP ID","external":true,"refSections":[{"refs":[{"id":"ref-for-rp-id"}],"title":"3. Passkey Endpoints URLs"},{"refs":[{"id":"ref-for-rp-id\u2460"}],"title":"3.2. Client Processing"}],"url":"https://www.w3.org/TR/webauthn-2#rp-id"},
 "785531b4": {"dfnID":"785531b4","dfnText":"webauthn relying party","external":true,"refSections":[{"refs":[{"id":"ref-for-webauthn-relying-party"}],"title":"1. Introduction"},{"refs":[{"id":"ref-for-webauthn-relying-party\u2460"}],"title":"3.1. Server Response"}],"url":"https://www.w3.org/TR/webauthn-2#webauthn-relying-party"},
 "8351dded": {"dfnID":"8351dded","dfnText":"passkey","external":true,"refSections":[{"refs":[{"id":"ref-for-passkey"}],"title":"1. Introduction"},{"refs":[{"id":"ref-for-passkey\u2460"}],"title":"3. Passkey Endpoints URLs"},{"refs":[{"id":"ref-for-passkey\u2461"}],"title":"3.1. Server Response"}],"url":"https://www.w3.org/TR/webauthn-3#passkey"},
 "852ada56": {"dfnID":"852ada56","dfnText":"port","external":true,"refSections":[{"refs":[{"id":"ref-for-concept-url-port"}],"title":"3.2. Client Processing"}],"url":"https://url.spec.whatwg.org/#concept-url-port"},
-"93cc1818": {"dfnID":"93cc1818","dfnText":"authenticator","external":true,"refSections":[{"refs":[{"id":"ref-for-authenticator"}],"title":"3.2. Client Processing"}],"url":"https://www.w3.org/TR/webauthn-2#authenticator"},
+"9094d03b": {"dfnID":"9094d03b","dfnText":"pseudo-random function extension","external":true,"refSections":[{"refs":[{"id":"ref-for-prf-extension"}],"title":"3.1. Server Response"}],"url":"https://www.w3.org/TR/webauthn-3#prf-extension"},
+"93cc1818": {"dfnID":"93cc1818","dfnText":"authenticator","external":true,"refSections":[{"refs":[{"id":"ref-for-authenticator"}],"title":"1. Introduction"},{"refs":[{"id":"ref-for-authenticator\u2460"}],"title":"3.2. Client Processing"}],"url":"https://www.w3.org/TR/webauthn-2#authenticator"},
 "b85ee3be": {"dfnID":"b85ee3be","dfnText":"host","external":true,"refSections":[{"refs":[{"id":"ref-for-concept-url-host"}],"title":"3.2. Client Processing"}],"url":"https://url.spec.whatwg.org/#concept-url-host"},
 "c0868016": {"dfnID":"c0868016","dfnText":"path","external":true,"refSections":[{"refs":[{"id":"ref-for-concept-url-path"}],"title":"3.2. Client Processing"}],"url":"https://url.spec.whatwg.org/#concept-url-path"},
 "d44100fa": {"dfnID":"d44100fa","dfnText":"relying party identifier","external":true,"refSections":[{"refs":[{"id":"ref-for-relying-party-identifier"}],"title":"3. Passkey Endpoints URLs"},{"refs":[{"id":"ref-for-relying-party-identifier\u2460"},{"id":"ref-for-relying-party-identifier\u2461"}],"title":"3.2. Client Processing"}],"url":"https://www.w3.org/TR/webauthn-2#relying-party-identifier"},
@@ -1618,6 +1627,7 @@ let refsData = {
 "https://www.w3.org/TR/webauthn-2#webauthn-client": {"displayText":"webauthn client","export":true,"for_":[],"level":"2","normative":true,"shortname":"webauthn","spec":"webauthn-2","status":"anchor-block","text":"webauthn client","type":"dfn","url":"https://www.w3.org/TR/webauthn-2#webauthn-client"},
 "https://www.w3.org/TR/webauthn-2#webauthn-relying-party": {"displayText":"webauthn relying party","export":true,"for_":[],"level":"2","normative":true,"shortname":"webauthn","spec":"webauthn-2","status":"anchor-block","text":"webauthn relying party","type":"dfn","url":"https://www.w3.org/TR/webauthn-2#webauthn-relying-party"},
 "https://www.w3.org/TR/webauthn-3#passkey": {"displayText":"passkey","export":true,"for_":[],"level":"3","normative":true,"shortname":"webauthn","spec":"webauthn-3","status":"anchor-block","text":"passkey","type":"dfn","url":"https://www.w3.org/TR/webauthn-3#passkey"},
+"https://www.w3.org/TR/webauthn-3#prf-extension": {"displayText":"pseudo-random function extension","export":true,"for_":[],"level":"3","normative":true,"shortname":"webauthn","spec":"webauthn-3","status":"anchor-block","text":"pseudo-random function extension","type":"dfn","url":"https://www.w3.org/TR/webauthn-3#prf-extension"},
 };
 
 function mkRefHint(link, ref) {
