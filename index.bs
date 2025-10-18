@@ -146,6 +146,28 @@ Given a passkey's [=relying party identifier=], generate a passkey endpoints URL
 
 <p class=example>The passkey endpoints URL for [=RP ID=] `"example.com"` is `"https://example.com/.well-known/passkey-endpoints"`.
 
+<div class="non-normative">
+
+<h2 id="usage">Usage by WebAuthn Clients and Credential Managers</h2>
+
+<em>This section is non-normative.</em>
+
+
+**enroll**
+
+**manage**
+
+**prfUsageDetails**
+
+Some Relying Parties (RPs) use the WebAuthn [=Pseudo-Random Function=] (PRF) Extension to sign or encrypt user data. Since passkeys are primarily designed for authentication, users may be unaware that deleting a PRF-enabled passkey could affect their saved data or other functionality.
+
+RPs leveraging PRF should provide a dedicated informational page detailing how their passkeys are used beyond authentication and the implications of deletion. This page's URL should be the value of the `prfUsageDetails` key.
+
+When this member is present, credential managers should display a warning during the passkey deletion flow, including a link to the RP's informational page.
+
+
+</div>
+
 <h2 id="iana">IANA considerations</h2>
 
 <h3 id="the-change-password-well-known-uri">The `passkey-endpoints` well-known URI</h3>
