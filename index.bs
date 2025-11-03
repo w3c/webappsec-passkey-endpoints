@@ -155,7 +155,20 @@ Given a passkey's [=relying party identifier=], generate a passkey endpoints URL
 
 **enroll**
 
+Passkey enrollments are typically driven by an RP's business logic and session context. Sometimes it can happen after a user successfully signs in with a password or goes through a password reset flow and other times when a user visits a dedicated "passkey creation" page.
+
+These passkey creation entry points can be difficult for users to find, as they're often buried inside account settings or help pages.
+
+Sample usage when this member is present: 
+- Credential managers can show a "passkey upgrade available" button in a given account entry, taking the user directly to the RP's passkey creation page in their default browser.
+- Credential managers can provide a passkey upgrade flow after detecting a user sign in with a password by showing a notification to the user, which when clicked, takes the user directly to the RP's passkey creation page in their default browser.
+- WebAuthn clients can provide a passkey upgrade flow after detecting a user sign in with a password by showing a notification to the user, which when clicked, takes the user directly to the RP's passkey creation page.
+
 **manage**
+
+Credential management is often buried inside account settings, which can be difficult to for users to find.
+
+When this member is present, credential managers can display a direct link to the RP's passkey (or general credential management) page. 
 
 **prfUsageDetails**
 
