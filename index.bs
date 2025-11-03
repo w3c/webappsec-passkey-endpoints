@@ -89,7 +89,7 @@ The server in this context is a [=WebAuthn Relying Party=] (RP) supporting [=pas
 
 A successful response MUST return either:
 - the 200 OK HTTP status code and a JSON object using the `application/json` content type
-- A [=redirect status=] of 302, 303, or 307, and a [=Location=] header.
+- a [=redirect status=] of 302, 303, or 307, and a [=Location=] header.
 
 
 <h4 id="json-response">JSON Response</h4>
@@ -138,7 +138,7 @@ The redirect destination MUST be the same registerable domain (eTLD+1) as the or
 <div class=example>
 
 ```http
-HTTP/1.1 307 Moved Temporarily
+HTTP/1.1 307 Temporary Redirect
 Location: https://login.example.com/.well-known/passkey-endpoints
 ```
 </div>
