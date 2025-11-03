@@ -45,6 +45,7 @@ spec: webauthn-3; urlPrefix: https://www.w3.org/TR/webauthn-3
     type: dfn
         text: passkey; url: passkey
         text: pseudo-random function extension; url: prf-extension
+text:Location; type:dfn; spec:rfc7231; url:https://tools.ietf.org/html/rfc7231#section-7.1.2
 </pre>
 
 <pre class="link-defaults">
@@ -78,15 +79,20 @@ This specification uses terminology from the Fetch, HTML, HTTP, and URL standard
 
 <h2 id="semantics">Passkey Endpoints URLs</h2>
 
-To advertise support for [=passkeys=] and/or provide direct endpoints for passkey creation and management, [=Relying Party|Relying Parties=] MUST host a JSON document at the path formed by concatenating the string `.well-known/passkey-endpoints` with the `https` [=scheme=] and [=relying party identifier=] as per [[WELL-KNOWN]]. A redirect MUST not be returned.
+To advertise support for [=passkeys=] and/or provide direct endpoints for passkey creation and management, [=Relying Party|Relying Parties=] MUST return a response at the path formed by concatenating the string `.well-known/passkey-endpoints` with the `https` [=scheme=] and [=relying party identifier=] as per [[WELL-KNOWN]]. 
 
-<p class=example>The passkey endpoints URL for [=RP ID=] `"example.com"` is `"https://example.com/.well-known/passkey-endpoints"`.
+<p class=example id="endpoint-url-example">The passkey endpoints URL for [=RP ID=] `"example.com"` is `"https://example.com/.well-known/passkey-endpoints"`.
 
 <h3 id="response">Server Response</h3>
 
 The server in this context is a [=WebAuthn Relying Party=] (RP) supporting [=passkeys=].
 
-A successful response MUST use the 200 OK HTTP status code and return a JSON object using the `application/json` content type.
+A successful response MUST return either:
+- the 200 OK HTTP status code and a JSON object using the `application/json` content type
+- A [=redirect status=] of 302, 303, or 307, and a [=Location=] header.
+
+
+<h4 id="json-response">JSON Response</h4>
 
 The returned JSON object can contain any of the members defined below.
 
@@ -124,6 +130,19 @@ Content-Type: application/json
 {}
 ```
 </div>
+
+<h4 id="redirect-response">Redirect Response</h4>
+
+The redirect destination MUST be the same registerable domain (eTLD+1) as the original request.
+
+<div class=example>
+
+```http
+HTTP/1.1 307 Moved Temporarily
+Location: https://login.example.com/.well-known/passkey-endpoints
+```
+</div>
+
 
 <h3 id="clients">Client Processing</h3>
 
