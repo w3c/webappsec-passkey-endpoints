@@ -166,7 +166,7 @@ Sample usage when this member is present:
 
 **manage**
 
-Credential management is often buried inside account settings, which can be difficult to for users to find.
+Credential management is often buried inside account settings, which can be difficult for users to find.
 
 When this member is present, credential managers can display a direct link to the RP's passkey (or general credential management) page. 
 
