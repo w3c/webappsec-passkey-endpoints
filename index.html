@@ -5,9 +5,9 @@
   <title>A Well-Known URL for Relying Party Passkey Endpoints</title>
   <meta content="ED" name="w3c-status">
   <link href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED" rel="stylesheet">
-  <meta content="Bikeshed version 3f621ba99, updated Mon Jul 28 15:38:36 2025 -0700" name="generator">
+  <meta content="Bikeshed version 3c53a5b02, updated Thu Nov 27 17:03:30 2025 +0000" name="generator">
   <link href="https://w3c.github.io/webappsec-passkey-endpoints/" rel="canonical">
-  <meta content="17664bf4c735388635c66b942326b020440d8a92" name="revision">
+  <meta content="34b917b94ef55c7d4a3f06ceb83d1cdc37adc052" name="revision">
   <meta content="dark light" name="color-scheme">
   <link href="https://www.w3.org/StyleSheets/TR/2021/dark.css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css">
 <style>/* Boilerplate: style-autolinks */
@@ -320,7 +320,7 @@ body {
 }
 .invalid.example:not(.no-marker)::before,
 .illegal.example:not(.no-marker)::before {
-    content: "Invalid Example" counter(example);
+    content: "Invalid Example " counter(example);
 }
 
 figcaption {
@@ -692,9 +692,9 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72">
 </a>
 </p>
-   <h1 class="p-name no-ref" id="title">A Well-Known URL for Relying Party Passkey Endpoints</h1>
+   <h1 class="no-ref p-name" id="title">A Well-Known URL for Relying Party Passkey Endpoints</h1>
    <p id="w3c-state"><a href="https://www.w3.org/standards/types/#ED">Editor’s Draft</a>,
-    <time class="dt-updated" datetime="2025-11-03">3 November 2025</time></p>
+    <time class="dt-updated" datetime="2026-01-13">13 January 2026</time></p>
    <details open>
     <summary>More details about this document</summary>
     <div data-fill-with="spec-metadata">
@@ -706,24 +706,24 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <dt>Issue Tracking:
       <dd><a href="https://github.com/w3c/webappsec-passkey-endpoints/issues/">GitHub</a>
       <dt class="editor">Editors:
-      <dd class="editor p-author h-card vcard" data-editor-id="111190"><a class="p-name fn u-email email" href="mailto:tim.cappalli@okta.com">Tim Cappalli</a> (<a class="p-org org" href="https://www.okta.com/">Okta</a>)
-      <dd class="editor p-author h-card vcard" data-editor-id="129314"><a class="p-name fn u-email email" href="mailto:mattmil3@cisco.com">Matthew Miller</a> (<span class="p-org org">Cisco</span>)
+      <dd class="editor h-card p-author vcard" data-editor-id="111190"><a class="email fn p-name u-email" href="mailto:tim.cappalli@okta.com">Tim Cappalli</a> (<a class="org p-org" href="https://www.okta.com/">Okta</a>)
+      <dd class="editor h-card p-author vcard" data-editor-id="129314"><a class="email fn p-name u-email" href="mailto:mattmil3@cisco.com">Matthew Miller</a> (<span class="org p-org">Cisco</span>)
      </dl>
     </div>
    </details>
    <div data-fill-with="warning"></div>
-   <p class="copyright" data-fill-with="copyright"><a href="https://www.w3.org/policies/#copyright">Copyright</a> © 2025 <a href="https://www.w3.org/">World Wide Web Consortium</a>. <abbr title="World Wide Web Consortium">W3C</abbr><sup>®</sup> <a href="https://www.w3.org/policies/#Legal_Disclaimer">liability</a>, <a href="https://www.w3.org/policies/#W3C_Trademarks">trademark</a> and <a href="https://www.w3.org/copyright/software-license/" rel="license" title="W3C Software and Document License">permissive document license</a> rules apply.
+   <p class="copyright" data-fill-with="copyright"><a href="https://www.w3.org/policies/#copyright">Copyright</a> © 2026 <a href="https://www.w3.org/">World Wide Web Consortium</a>. <abbr title="World Wide Web Consortium">W3C</abbr><sup>®</sup> <a href="https://www.w3.org/policies/#Legal_Disclaimer">liability</a>, <a href="https://www.w3.org/policies/#W3C_Trademarks">trademark</a> and <a href="https://www.w3.org/copyright/software-license/" rel="license" title="W3C Software and Document License">permissive document license</a> rules apply.
 </p>
    <hr title="Separator for header">
   </div>
   <div class="p-summary" data-fill-with="abstract">
-   <h2 class="no-num no-toc no-ref heading settled" id="abstract"><span class="content">Abstract</span></h2>
+   <h2 class="heading no-num no-ref no-toc settled" id="abstract"><span class="content">Abstract</span></h2>
    <p>This specification defines a well-known URL which WebAuthn
 Relying Parties (RPs) can host to make their creation, management,
 and other informational endpoints discoverable by WebAuthn Clients
 and credential managers.</p>
   </div>
-  <h2 class="no-num no-toc no-ref heading settled" id="sotd"><span class="content">Status of this document</span></h2>
+  <h2 class="heading no-num no-ref no-toc settled" id="sotd"><span class="content">Status of this document</span></h2>
   <div data-fill-with="status">
    <p>
 	This is a public copy of the editors’ draft.
@@ -771,8 +771,8 @@ and credential managers.</p>
   </div>
   <div data-fill-with="at-risk"></div>
   <nav data-fill-with="table-of-contents" id="toc">
-   <h2 class="no-num no-toc no-ref" id="contents">Table of Contents</h2>
-   <ol class="toc" role="directory">
+   <h2 class="no-num no-ref no-toc" id="contents">Table of Contents</h2>
+   <ol class="toc">
     <li><a href="#intro"><span class="secno">1</span> <span class="content">Introduction</span></a>
     <li><a href="#infra"><span class="secno">2</span> <span class="content">Infrastructure</span></a>
     <li>
@@ -781,10 +781,11 @@ and credential managers.</p>
       <li><a href="#response"><span class="secno">3.1</span> <span class="content">Server Response</span></a>
       <li><a href="#clients"><span class="secno">3.2</span> <span class="content">Client Processing</span></a>
      </ol>
+    <li><a href="#usage"><span class="secno">4</span> <span class="content">Usage by WebAuthn Clients and Credential Managers</span></a>
     <li>
-     <a href="#iana"><span class="secno">4</span> <span class="content">IANA considerations</span></a>
+     <a href="#iana"><span class="secno">5</span> <span class="content">IANA considerations</span></a>
      <ol class="toc">
-      <li><a href="#the-change-password-well-known-uri"><span class="secno">4.1</span> <span class="content">The <code>passkey-endpoints</code> well-known URI</span></a>
+      <li><a href="#the-change-password-well-known-uri"><span class="secno">5.1</span> <span class="content">The <code>passkey-endpoints</code> well-known URI</span></a>
      </ol>
     <li><a href="#acknowedgements"><span class="secno"></span> <span class="content">Acknowledgements</span></a>
     <li>
@@ -839,7 +840,7 @@ By proposing a well-known URL which defines a set of passkey-specific endpoints,
     <a class="self-link" href="#example-89040d1f"></a>
 
 
-<pre class="language-http highlight"><c- kr>HTTP</c-><c- o>/</c-><c- m>1.1</c-> <c- m>200</c-> <c- ne>OK</c->
+<pre class="highlight language-http"><c- kr>HTTP</c-><c- o>/</c-><c- m>1.1</c-> <c- m>200</c-> <c- ne>OK</c->
 <c- e>Content-Type</c-><c- o>:</c-> <c- l>application/json</c->
 
 <c- p>{</c->
@@ -853,7 +854,7 @@ By proposing a well-known URL which defines a set of passkey-specific endpoints,
    <div class="example" id="example-90368790">
     <a class="self-link" href="#example-90368790"></a>
 
-<pre class="language-http highlight"><c- kr>HTTP</c-><c- o>/</c-><c- m>1.1</c-> <c- m>200</c-> <c- ne>OK</c->
+<pre class="highlight language-http"><c- kr>HTTP</c-><c- o>/</c-><c- m>1.1</c-> <c- m>200</c-> <c- ne>OK</c->
 <c- e>Content-Type</c-><c- o>:</c-> <c- l>application/json</c->
 
 <c- p>{}</c->
@@ -885,8 +886,31 @@ By proposing a well-known URL which defines a set of passkey-specific endpoints,
    <p class="example" id="example-0ea3bd03①"><a class="self-link" href="#example-0ea3bd03①"></a>The passkey endpoints URL for <a data-link-type="dfn" href="https://www.w3.org/TR/webauthn-2#rp-id" id="ref-for-rp-id①">RP ID</a> <code>"example.com"</code> is <code>"https://example.com/.well-known/passkey-endpoints"</code>.
 
 </p>
-   <h2 class="heading settled" data-level="4" id="iana"><span class="secno">4. </span><span class="content">IANA considerations</span><a class="self-link" href="#iana"></a></h2>
-   <h3 class="heading settled" data-level="4.1" id="the-change-password-well-known-uri"><span class="secno">4.1. </span><span class="content">The <code>passkey-endpoints</code> well-known URI</span><a class="self-link" href="#the-change-password-well-known-uri"></a></h3>
+   <div class="non-normative">
+    <h2 class="heading settled" data-level="4" id="usage"><span class="secno">4. </span><span class="content">Usage by WebAuthn Clients and Credential Managers</span><a class="self-link" href="#usage"></a></h2>
+    <p><em>This section is non-normative.</em></p>
+    <p><strong>enroll</strong></p>
+    <p>Passkey enrollments are typically driven by an RP’s business logic and session context. Sometimes it can happen after a user successfully signs in with a password or goes through a password reset flow and other times when a user visits a dedicated "passkey creation" page.</p>
+    <p>These passkey creation entry points can be difficult for users to find, as they’re often buried inside account settings or help pages.</p>
+    <p>Sample usage when this member is present:</p>
+    <ul>
+     <li data-md>
+      <p>Credential managers can show a "passkey upgrade available" button in a given account entry, taking the user directly to the RP’s passkey creation page in their default browser.</p>
+     <li data-md>
+      <p>Credential managers can provide a passkey upgrade flow after detecting a user sign in with a password by showing a notification to the user, which when clicked, takes the user directly to the RP’s passkey creation page in their default browser.</p>
+     <li data-md>
+      <p>WebAuthn clients can provide a passkey upgrade flow after detecting a user sign in with a password by showing a notification to the user, which when clicked, takes the user directly to the RP’s passkey creation page.</p>
+    </ul>
+    <p><strong>manage</strong></p>
+    <p>Credential management is often buried inside account settings, which can be difficult for users to find.</p>
+    <p>When this member is present, credential managers can display a direct link to the RP’s passkey (or general credential management) page.</p>
+    <p><strong>prfUsageDetails</strong></p>
+    <p>Some Relying Parties (RPs) use the WebAuthn <u class="link-error" data-lt="Pseudo-Random Function" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;pseudo-random function&apos;.">Pseudo-Random Function</u> (PRF) Extension to sign or encrypt user data. Since passkeys are primarily designed for authentication, users may be unaware that deleting a PRF-enabled passkey could affect their saved data or other functionality.</p>
+    <p>RPs leveraging PRF should provide a dedicated informational page detailing how their passkeys are used beyond authentication and the implications of deletion. This page’s URL should be the value of the <code>prfUsageDetails</code> key.</p>
+    <p>When this member is present, credential managers should display a warning during the passkey deletion flow, including a link to the RP’s informational page.</p>
+   </div>
+   <h2 class="heading settled" data-level="5" id="iana"><span class="secno">5. </span><span class="content">IANA considerations</span><a class="self-link" href="#iana"></a></h2>
+   <h3 class="heading settled" data-level="5.1" id="the-change-password-well-known-uri"><span class="secno">5.1. </span><span class="content">The <code>passkey-endpoints</code> well-known URI</span><a class="self-link" href="#the-change-password-well-known-uri"></a></h3>
    <p>This document defines the "<code>.well-known</code>" URI <code>passkey-endpoints</code>.
 This registration will be submitted to the IESG for review, approval, and registration with IANA using the template defined in <a data-link-type="biblio" href="#biblio-well-known" title="Well-Known Uniform Resource Identifiers (URIs)">[WELL-KNOWN]</a> as follows:</p>
    <dl>
@@ -903,12 +927,12 @@ This registration will be submitted to the IESG for review, approval, and regist
     <dd data-md>
      <p>None.</p>
    </dl>
-   <h2 class="no-num heading settled" id="acknowedgements"><span class="content">Acknowledgements</span><a class="self-link" href="#acknowedgements"></a></h2>
+   <h2 class="heading no-num settled" id="acknowedgements"><span class="content">Acknowledgements</span><a class="self-link" href="#acknowedgements"></a></h2>
    <p>Thanks to Arnar Birgisson, Rew Islam, Adam Langley, René Léveillé, Matthew Miller, Ricky Mondello, and Dan Veditz for their feedback on this proposal.</p>
   </main>
   <div data-fill-with="conformance">
-   <h2 class="no-ref no-num heading settled" id="w3c-conformance"><span class="content">Conformance</span><a class="self-link" href="#w3c-conformance"></a></h2>
-   <h3 class="no-ref no-num heading settled" id="w3c-conventions"><span class="content">Document conventions</span><a class="self-link" href="#w3c-conventions"></a></h3>
+   <h2 class="heading no-num no-ref settled" id="w3c-conformance"><span class="content">Conformance</span><a class="self-link" href="#w3c-conformance"></a></h2>
+   <h3 class="heading no-num no-ref settled" id="w3c-conventions"><span class="content">Document conventions</span><a class="self-link" href="#w3c-conventions"></a></h3>
    <p>Conformance requirements are expressed
     with a combination of descriptive assertions
     and RFC 2119 terminology.
@@ -943,7 +967,7 @@ This registration will be submitted to the IESG for review, approval, and regist
     </p>
    <p class="note" role="note">Note, this is an informative note.</p>
    <section>
-    <h3 class="no-ref no-num heading settled" id="w3c-conformant-algorithms"><span class="content">Conformant Algorithms</span><a class="self-link" href="#w3c-conformant-algorithms"></a></h3>
+    <h3 class="heading no-num no-ref settled" id="w3c-conformant-algorithms"><span class="content">Conformant Algorithms</span><a class="self-link" href="#w3c-conformant-algorithms"></a></h3>
     <p>Requirements phrased in the imperative as part of algorithms
     (such as "strip any leading space characters"
     or "return false and abort these steps")
@@ -963,8 +987,8 @@ This registration will be submitted to the IESG for review, approval, and regist
    </section>
   </div>
   <script src="https://www.w3.org/scripts/TR/2021/fixup.js"></script>
-  <h2 class="no-num no-ref heading settled" id="index"><span class="content">Index</span><a class="self-link" href="#index"></a></h2>
-  <h3 class="no-num no-ref heading settled" id="index-defined-elsewhere"><span class="content">Terms defined by reference</span><a class="self-link" href="#index-defined-elsewhere"></a></h3>
+  <h2 class="heading no-num no-ref settled" id="index"><span class="content">Index</span><a class="self-link" href="#index"></a></h2>
+  <h3 class="heading no-num no-ref settled" id="index-defined-elsewhere"><span class="content">Terms defined by reference</span><a class="self-link" href="#index-defined-elsewhere"></a></h3>
   <ul class="index">
    <li>
     <a data-link-type="biblio">[URL]</a> defines the following terms:
@@ -992,8 +1016,8 @@ This registration will be submitted to the IESG for review, approval, and regist
      <li><span class="dfn-paneled" id="9094d03b">pseudo-random function extension</span>
     </ul>
   </ul>
-  <h2 class="no-num no-ref heading settled" id="references"><span class="content">References</span><a class="self-link" href="#references"></a></h2>
-  <h3 class="no-num no-ref heading settled" id="normative"><span class="content">Normative References</span><a class="self-link" href="#normative"></a></h3>
+  <h2 class="heading no-num no-ref settled" id="references"><span class="content">References</span><a class="self-link" href="#references"></a></h2>
+  <h3 class="heading no-num no-ref settled" id="normative"><span class="content">Normative References</span><a class="self-link" href="#normative"></a></h3>
   <dl>
    <dt id="biblio-fetch">[FETCH]
    <dd>Anne van Kesteren. <a href="https://fetch.spec.whatwg.org/"><cite>Fetch Standard</cite></a>. Living Standard. URL: <a href="https://fetch.spec.whatwg.org/">https://fetch.spec.whatwg.org/</a>
