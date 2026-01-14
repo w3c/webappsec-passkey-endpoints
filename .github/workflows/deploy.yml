@@ -1,13 +1,14 @@
-name: deploy
+name: Node CI
 
 on:
-  pull_request: {}
   push:
-    branches: [main]
+    branches:
+      - main
+  pull_request: {}
 
 jobs:
-  main:
-    name: Build, Validate, and Publish
+  validate-and-publish:
+    name: Validate and Publish
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -15,10 +16,13 @@ jobs:
         with:
           SOURCE: index.bs
           TOOLCHAIN: bikeshed
-          GH_PAGES_BRANCH: gh-pages
           BUILD_FAIL_ON: nothing
           VALIDATE_LINKS: false
           VALIDATE_MARKUP: true
+          GH_PAGES_BRANCH: gh-pages
+          W3C_ECHIDNA_TOKEN: ${{ secrets.ECHIDNA_TOKEN }}
+          W3C_WG_DECISION_URL: "https://github.com/w3c/webappsec/issues/678"
+          W3C_NOTIFICATIONS_CC: "${{ secrets.CC }}"
           W3C_BUILD_OVERRIDE: |
             shortname: passkey-endpoints
             status: WD
