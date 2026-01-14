@@ -5,8 +5,9 @@ Level: 1
 Status: ED
 Group: WebAppSec
 Repository: w3c/webappsec-passkey-endpoints
-URL: https://www.w3.org/TR/passkey-endpoints/
+URL: https://w3c.github.io/webappsec-passkey-endpoints/
 ED: https://w3c.github.io/webappsec-passkey-endpoints/
+TR: https://www.w3.org/TR/passkey-endpoints/
 Editor: Tim Cappalli, w3cid 111190, Okta https://www.okta.com/, tim.cappalli@okta.com
 Editor: Matthew Miller, w3cid 129314, Cisco, mattmil3@cisco.com
 Abstract: This specification defines a well-known URL which WebAuthn
