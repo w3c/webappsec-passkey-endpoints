@@ -66,7 +66,7 @@ text:scheme;        type:dfn;         spec:url
 
 <em>This section is non-normative.</em>
 
-[=WebAuthn Relying Party|WebAuthn Relying Parties=] (RPs) currently lack a way to programmatically advertise that they support [=passkeys=], where a user <span class="allow-2119">can</span> create a passkey for the service and where they can manage existing passkeys for the service. Passkeys can also be used for additional functions beyond sign in, such as signing and encryption. 
+[=WebAuthn Relying Party|WebAuthn Relying Parties=] (RPs) currently lack a way to programmatically advertise that they support [=passkeys=], where a user <span class="allow-2119">can</span> create a passkey for the service and where they can manage existing passkeys for the service. Passkeys can also be used for additional functions beyond sign in, such as signing and encryption.
 By proposing a well-known URL which defines a set of passkey-specific endpoints, this specification enables [=WebAuthn Clients=] and credential managers ([=authenticators=]) to link directly to workflow-specific and informational endpoints instead of the user needing to dig through their account settings and help pages.
 
 </div>
@@ -79,7 +79,7 @@ This specification uses terminology from the Fetch, HTML, HTTP, and URL standard
 
 <h2 id="semantics">Passkey Endpoints URLs</h2>
 
-To advertise support for [=passkeys=] and/or provide direct endpoints for passkey creation and management, [=Relying Party|Relying Parties=] MUST return a response at the path formed by concatenating the string `.well-known/passkey-endpoints` with the `https` [=scheme=] and [=relying party identifier=] as per [[WELL-KNOWN]]. 
+To advertise support for [=passkeys=] and/or provide direct endpoints for passkey creation and management, [=Relying Party|Relying Parties=] MUST return a response at the path formed by concatenating the string `.well-known/passkey-endpoints` with the `https` [=scheme=] and [=relying party identifier=] as per [[WELL-KNOWN]].
 
 <p class=example id="endpoint-url-example">The passkey endpoints URL for [=RP ID=] `"example.com"` is `"https://example.com/.well-known/passkey-endpoints"`.
 
@@ -133,7 +133,8 @@ Content-Type: application/json
 
 <h4 id="redirect-response">Redirect Response</h4>
 
-The redirect destination MUST be the same registerable domain (eTLD+1) as the original request.
+The user agent MUST NOT follow more than one redirect.
+The final destination URL MUST have the same registrable domain (eTLD+1) as the original request URL.
 
 <div class=example>
 
