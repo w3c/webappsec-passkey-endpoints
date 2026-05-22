@@ -133,7 +133,7 @@ Content-Type: application/json
 
 <h4 id="redirect-response">Redirect Response</h4>
 
-The user agent MUST NOT follow more than one redirect.
+Clients MUST NOT follow more than one redirect.
 The final destination URL MUST have the same registrable domain (eTLD+1) as the original request URL.
 
 <div class=example>
